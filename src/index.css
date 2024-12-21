@@ -41,6 +41,10 @@
   	.markdown-content h2 {
 		@apply text-3xl font-bold my-4;
   	}
+
+	.navLinks {
+		@apply hover:text-info transition-colors duration-300 hover:underline underline-offset-8 text-nowrap
+	}
   
   	.markdown-content h3 {
 		@apply text-2xl font-semibold my-4;

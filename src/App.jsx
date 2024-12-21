@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import './output.css'
 
 
@@ -10,7 +10,8 @@ import Projects from './pages/Projects'
 import Footer from './pages/Footer'
 import Newsletter from './pages/Newsletter'
 import Post from './pages/Post'
-import { dummyPosts, markdown } from './constants'
+import Category from './pages/Category'
+import About from './pages/About'
 
 
 
@@ -25,9 +26,13 @@ function App() {
 						<Route path='/' element={<Home />} />
 						<Route path='/home' element={<Home />} />
 						<Route path='/blog' element={<Home />} />
-						<Route path='/project' element={<Projects />} />
+						<Route path='/about' element={<About />} />
+						<Route path='/category/:id' element={<Category />} />
 						<Route path='/newsletter' element={<Newsletter />} />
-						<Route path='/about' element={<Post markdownText={markdown} title={dummyPosts[0].postTitle} body={dummyPosts[0].postBody} baseImgSrc={dummyPosts[0].postImgUrl} baseDate={new Date().toLocaleDateString()}/>} />
+						<Route path='/posts/:id' element={<Post />} />
+						<Route path='/search/name/:name' element={<Post />} />
+						<Route path='/search/tag/:tag' element={<Post />} />
+						<Route path='/search/cat/:id' element={<Category />} />
 					</Routes>
 				</section>
 			</BrowserRouter>

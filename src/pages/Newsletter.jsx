@@ -1,9 +1,22 @@
+import { useEffect, useState } from 'react'
+import { getRecentPosts } from '../api/ApiHandler'
 import BlockBlogCard from '../components/BlockBlogCard'
 import EmailBar from '../components/EmailBar'
 import Pagination from '../components/Pagination'
-import { dummyPosts } from '../constants'
+import { AUTH } from '../utility'
 
 const Newsletter = () => {
+	const [recentPosts, setRecentPosts] = useState([])
+
+	const updateRecentPosts = async () => {
+		const posts = await getRecentPosts(30, AUTH.USERNAME, AUTH.PASSWORD, AUTH.URL, AUTH.SECRET)
+		setRecentPosts(posts.data)
+	}
+
+	useEffect(() => {
+		updateRecentPosts()
+	})
+
 	return (
 		<section>
 			<div className='flex justify-center items-center w-full flex-col gap-10'>
@@ -18,8 +31,14 @@ const Newsletter = () => {
 			</div>
 
 
-			<div className="grid w-full grid-cols-3 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 px-10">
-				{dummyPosts.slice(5, 11).map((data, i) => (
+			<div className="grid w-full grid-cols-3 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 px-10 min-h-80">
+				{/* {dummyPosts.slice(5, 11).map((data, i) => (
+					<div key={i}>
+						<BlockBlogCard {...data} />
+					</div>
+				))} */}
+
+				{recentPosts.slice(0, 6).map((data, i) => (
 					<div key={i}>
 						<BlockBlogCard {...data} />
 					</div>

@@ -8161,6 +8161,16 @@ html:has(.drawer-open.drawer-open){
   z-index: 1;
 }
 
+.my-1{
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.my-2{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .my-4{
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -8173,6 +8183,10 @@ html:has(.drawer-open.drawer-open){
 
 .mt-24{
   margin-top: 6rem;
+}
+
+.mt-4{
+  margin-top: 1rem;
 }
 
 .block{
@@ -8211,6 +8225,10 @@ html:has(.drawer-open.drawer-open){
   aspect-ratio: 1 / 1;
 }
 
+.h-32{
+  height: 8rem;
+}
+
 .h-4{
   height: 1rem;
 }
@@ -8227,10 +8245,6 @@ html:has(.drawer-open.drawer-open){
   height: 24rem;
 }
 
-.h-auto{
-  height: auto;
-}
-
 .h-fit{
   height: -moz-fit-content;
   height: fit-content;
@@ -8238,6 +8252,14 @@ html:has(.drawer-open.drawer-open){
 
 .h-full{
   height: 100%;
+}
+
+.min-h-80{
+  min-height: 20rem;
+}
+
+.min-h-96{
+  min-height: 24rem;
 }
 
 .min-h-screen{
@@ -8250,6 +8272,14 @@ html:has(.drawer-open.drawer-open){
 
 .w-2\/3{
   width: 66.666667%;
+}
+
+.w-3{
+  width: 0.75rem;
+}
+
+.w-32{
+  width: 8rem;
 }
 
 .w-4{
@@ -8275,10 +8305,6 @@ html:has(.drawer-open.drawer-open){
 
 .w-full{
   width: 100%;
-}
-
-.max-w-full{
-  max-width: 100%;
 }
 
 .flex-1{
@@ -8411,6 +8437,10 @@ html:has(.drawer-open.drawer-open){
   text-wrap: nowrap;
 }
 
+.text-pretty{
+  text-wrap: pretty;
+}
+
 .break-words{
   overflow-wrap: break-word;
 }
@@ -8468,11 +8498,6 @@ html:has(.drawer-open.drawer-open){
 .bg-base-300{
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity, 1)));
-}
-
-.bg-red-100{
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 226 226 / var(--tw-bg-opacity, 1));
 }
 
 .bg-transparent{
@@ -8628,6 +8653,10 @@ html:has(.drawer-open.drawer-open){
   font-weight: 600;
 }
 
+.font-thin{
+  font-weight: 100;
+}
+
 .uppercase{
   text-transform: uppercase;
 }
@@ -8656,11 +8685,6 @@ html:has(.drawer-open.drawer-open){
   letter-spacing: 0.05em;
 }
 
-.text-base-300{
-  --tw-text-opacity: 1;
-  color: var(--fallback-b3,oklch(var(--b3)/var(--tw-text-opacity, 1)));
-}
-
 .text-base-content{
   --tw-text-opacity: 1;
   color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1)));
@@ -8685,16 +8709,16 @@ html:has(.drawer-open.drawer-open){
   text-decoration-line: underline;
 }
 
-.underline-offset-8{
-  text-underline-offset: 8px;
-}
-
 .opacity-0{
   opacity: 0;
 }
 
 .opacity-100{
   opacity: 1;
+}
+
+.opacity-30{
+  opacity: 0.3;
 }
 
 .opacity-70{
@@ -8762,10 +8786,6 @@ html:has(.drawer-open.drawer-open){
 
 .duration-1000{
   transition-duration: 1000ms;
-}
-
-.duration-300{
-  transition-duration: 300ms;
 }
 
 .duration-500{
@@ -8849,6 +8869,20 @@ html:has(.drawer-open.drawer-open){
 
 /* Headers */
 
+.navLinks{
+  text-wrap: nowrap;
+  text-underline-offset: 8px;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.navLinks:hover{
+  --tw-text-opacity: 1;
+  color: var(--fallback-in,oklch(var(--in)/var(--tw-text-opacity, 1)));
+  text-decoration-line: underline;
+}
+
 * {
   scroll-behavior: smooth;
 }
@@ -8908,18 +8942,9 @@ html:has(.drawer-open.drawer-open){
   fill: var(--fallback-su,oklch(var(--su)/1));
 }
 
-.hover\:text-info:hover{
+.hover\:text-green-700:hover{
   --tw-text-opacity: 1;
-  color: var(--fallback-in,oklch(var(--in)/var(--tw-text-opacity, 1)));
-}
-
-.hover\:text-primary:hover{
-  --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity, 1)));
-}
-
-.hover\:underline:hover{
-  text-decoration-line: underline;
+  color: rgb(21 128 61 / var(--tw-text-opacity, 1));
 }
 
 @media not all and (min-width: 1024px){
@@ -8931,6 +8956,10 @@ html:has(.drawer-open.drawer-open){
 @media not all and (min-width: 768px){
   .max-md\:hidden{
     display: none;
+  }
+
+  .max-md\:h-60{
+    height: 15rem;
   }
 
   .max-md\:grid-cols-1{
@@ -8972,10 +9001,6 @@ html:has(.drawer-open.drawer-open){
 @media (min-width: 768px){
   .md\:hidden{
     display: none;
-  }
-
-  .md\:h-72{
-    height: 18rem;
   }
 
   .md\:place-self-center{

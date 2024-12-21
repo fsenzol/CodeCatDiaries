@@ -7,8 +7,9 @@ const ImgRenderer = ({ src, alt, title }) => {
 				src={src}
 				alt={alt || 'image'}
 				title={title}
+				width={300}
 				loading='lazy'
-				className='max-w-full h-auto w-full rounded-md object-cover md:h-72 my-4'
+				className='object-fit w-full my-4 h-72m'
 			/>
 		</div>
 

@@ -2,39 +2,45 @@ import { FaLink } from "react-icons/fa"
 import TagComponent from "./TagComponent"
 import LikeTag from "./LikeTag"
 import ShareTag from "./ShareTag"
+import ViewTag from "./ViewTag"
+import { Suspense } from "react"
 
-const BlockBlogCard = ({ postImgUrl, postDate, postTitle, postBody, postTags, postImgAlt, postId}) => {
-	const postRealDate = new Date(postDate) || new Date()
+const BlockBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes, views, created_at }) => {
 	return (
-		<div className="flex flex-col flex-1 justify-center items-start gap-2 blog-post-card">
-			<img
-				src={postImgUrl}
-				alt={postImgAlt || 'generic-image'}
-				className="object-cover h-48 rounded-md w-full btn-bounce"
-			/>
 
-			<p className="post-text-date">{postRealDate.toLocaleString()}</p>
+		<Suspense fallback={<div className="skeleton h-32 w-32"></div>}>
+			<div className="flex flex-col flex-1 justify-center items-start gap-2 blog-post-card">
+				<img
+					src={featured_image}
+					alt={slug || 'generic-image'}
+					className="object-fit h-48 rounded-md w-full btn-bounce"
+				/>
 
-			<div className="flex flex-1 w-96 justify-between items-center">
-				<h2 className="font-semibold font-lato text-xl">{postTitle}</h2>
+				<p className="post-text-date">{new Date(created_at).toLocaleString()}</p>
+
+				<div className="flex flex-1 w-96 justify-between items-center">
+					<h2 className="font-semibold font-lato text-xl">{title}</h2>
+				</div>
+
+				{/* <p className="leading-tight font-roboto break-words text-lg">{postBody}</p> */}
+
+				<div className="flex flex-1 flex-wrap justify-start gap-6">
+					{tags.map((str, i) => (
+						<TagComponent tagName={str} key={i} />
+					))}
+				</div>
+
+
+				<div className="flex my-4 gap-6 z-20">
+					<LikeTag likes={likes} />
+					<ViewTag views={views} />
+					<ShareTag />
+				</div>
+
 			</div>
 
-			{/* <p className="leading-tight font-roboto break-words text-lg">{postBody}</p> */}
 
-			<div className="flex flex-1 flex-wrap justify-start gap-6">
-				{postTags.map((str, i) => (
-					<TagComponent tagName={str} key={i} />
-				))}
-			</div>
-
-			
-			<div className="flex my-4 gap-6 z-20">
-				<LikeTag />
-				<ShareTag />
-			</div>
-
-
-		</div>
+		</Suspense>
 
 	)
 }
