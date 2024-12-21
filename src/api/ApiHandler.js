@@ -26,6 +26,7 @@ export const generateToken = async (username, password, URL, SECRET) => {
 	// 	}
 	// } catch (ignore) { }
 
+
 	try {
 
 		const response = await axios.post(`${URL}/authors/token`, {

@@ -17,9 +17,6 @@ const Home = () => {
 		setRecentPosts(posts.data)
 	}
 
-
-
-
 	useEffect(() => {
 		updateRecentPosts()
 	}, [])
