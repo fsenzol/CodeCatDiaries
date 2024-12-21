@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+	scroll-behavior: smooth;
+}
+
+@layer utilities {
+	.post-text-date {
+		@apply text-info text-sm font-kanit font-light
+	}
+
+	.border-t-only {
+		@apply border border-l-0 border-r-0 border-b-0
+	}
+
+	.text-header-content {
+		@apply uppercase font-lato font-bold w-full my-10 text-2xl text-info tracking-wider max-sm:text-[15px];
+	}
+	.text-header-content-no-marg {
+		@apply uppercase font-lato font-bold w-full text-2xl text-info tracking-wider max-sm:text-[15px];
+	}
+	
+	.btn-bounce {
+		@apply transition-all duration-150 active:scale-90 ease-in-out select-none;
+	}
+
+	.blog-post-card {
+		@apply border-[1px] border-neutral-content z-10 shadow-xl rounded-2xl p-4
+	}
+
+	/* Headers */
+	.markdown-content h1 {
+		@apply text-4xl font-bold my-4;
+  	}
+  
+  	.markdown-content h2 {
+		@apply text-3xl font-bold my-4;
+  	}
+  
+  	.markdown-content h3 {
+		@apply text-2xl font-semibold my-4;
+  	}
+  
+}
+
+.fix-whitespace {
+	white-space: 'pre-wrap';
+}
