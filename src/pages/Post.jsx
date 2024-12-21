@@ -35,12 +35,12 @@ const Post = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-4 px-4 justify-center md:text-2xl">
+      <div className="flex flex-col gap-4 px-2 justify-center">
         <h3 className="post-text-date py-2">Published: {new Date(post.created_at).toLocaleString()}</h3>
         <h1 className="text-4xl font-bold my-4">{post.title}</h1>
         <p className="font-roboto font-semibold">{post.summary}</p>
 
-        <div className="font-lato flex flex-1 flex-col grow text-justify leading-normal tracking-normal mb-10">
+        <div className="font-lato flex flex-1 flex-col grow leading-normal tracking-normal mb-10">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
@@ -51,7 +51,7 @@ const Post = () => {
               em: ({ node, ...props }) => <em className="italic" {...props} />,
               p: ({ node, ...props }) => <p className="my-4 text-base leading-relaxed" {...props} />,
               ul: ({ node, ...props }) => <ul className="list-disc pl-6" {...props} />,
-              ol: ({ node, ...props }) => <ol className="list-decimal pl-6" {...props} />,
+              ol: ({ node, ...props }) => <ol className="list-decimal pl-3 font-semibold text-lg leading-relaxed my-2" {...props} />,
               a: ({ node, ...props }) => <a className="text-link underline hover:text-green-700" {...props} />,
               img: ({ src, alt }) => <ImgRenderer src={src} alt={alt} />,
 
