@@ -9022,6 +9022,11 @@ html:has(.drawer-open.drawer-open){
     padding: 1rem;
   }
 
+  .max-md\:px-4{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .max-md\:text-\[60px\]{
     font-size: 60px;
   }
@@ -9043,6 +9048,11 @@ html:has(.drawer-open.drawer-open){
 
   .max-sm\:text-\[40px\]{
     font-size: 40px;
+  }
+
+  .max-sm\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .max-sm\:tracking-tighter{
