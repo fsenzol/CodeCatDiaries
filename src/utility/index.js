@@ -17,5 +17,5 @@ export const AUTH = {
 	USERNAME: import.meta.env.VITE_USER,
 	PASSWORD: import.meta.env.VITE_PASS,
 	URL: import.meta.env.VITE_API_URL,
-	SECRET: import.meta.env.VITE_SECRET
+	SECRET: import.meta.env.VITE_SECR
 }
