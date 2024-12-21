@@ -9018,6 +9018,10 @@ html:has(.drawer-open.drawer-open){
     grid-template-rows: repeat(1, minmax(0, 1fr));
   }
 
+  .max-md\:p-4{
+    padding: 1rem;
+  }
+
   .max-md\:text-\[60px\]{
     font-size: 60px;
   }
@@ -9057,6 +9061,11 @@ html:has(.drawer-open.drawer-open){
 
   .md\:justify-self-end{
     justify-self: end;
+  }
+
+  .md\:px-10{
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   .md\:text-2xl{

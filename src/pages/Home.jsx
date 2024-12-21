@@ -23,7 +23,7 @@ const Home = () => {
 
 	return (
 		<section className="relative">
-			<div className="flex justify-start flex-col px-10">
+			<div className="flex justify-start flex-col md:px-10 max-md:p-4">
 				<div>
 					<LargePageTitle defaultSize="150px" maxSize="90px" name={"THE BLOG"} font={"roboto"} />
 				</div>
@@ -54,7 +54,7 @@ const Home = () => {
 
 			</div>
 
-			<div className="grid w-full grid-cols-3 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 px-10 min-h-80">
+			<div className="grid w-full grid-cols-3 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 min-h-80">
 				{/* {dummyPosts.slice(5, 11).map((data, i) => (
 					<div key={i}>
 						<BlockBlogCard {...data} />
