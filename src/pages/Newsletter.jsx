@@ -15,7 +15,7 @@ const Newsletter = () => {
 
 	useEffect(() => {
 		updateRecentPosts()
-	})
+	}, [])
 
 	return (
 		<section>
@@ -27,29 +27,28 @@ const Newsletter = () => {
 				<p className='font-montserrat font-semibold'>We care about your data!</p>
 			</div>
 			<div className='px-10'>
-				<h1 className="text-header-content">All blog posts</h1>
+				<h1 className="text-header-content">Recent blog posts</h1>
 			</div>
 
 
-			<div className="grid w-full grid-cols-3 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 px-10 min-h-80">
-				{/* {dummyPosts.slice(5, 11).map((data, i) => (
-					<div key={i}>
-						<BlockBlogCard {...data} />
+			{
+				recentPosts.length > 0 ? (
+					<>
+						<div className="grid w-full grid-cols-3 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 px-10 min-h-80 mb-16">
+
+							{recentPosts.slice(0, 6).map((data, i) => (
+								<div key={i}>
+									<BlockBlogCard {...data} />
+								</div>
+							))}
+						</div>
+					</>
+				) : (
+					<div className='w-full h-screen flex justify-center items-center'>
+						<span className="loading loading-ring loading-lg"></span>
 					</div>
-				))} */}
-
-				{recentPosts.slice(0, 6).map((data, i) => (
-					<div key={i}>
-						<BlockBlogCard {...data} />
-					</div>
-				))}
-			</div>
-
-
-			<div className=" my-6 w-full border-t-only flex justify-center p-2 border-base-content">
-				<Pagination />
-			</div>
-
+				)
+			}
 
 		</section>
 	)

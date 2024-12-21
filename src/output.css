@@ -8161,6 +8161,10 @@ html:has(.drawer-open.drawer-open){
   z-index: 1;
 }
 
+.m-auto{
+  margin: auto;
+}
+
 .my-1{
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
@@ -8187,6 +8191,18 @@ html:has(.drawer-open.drawer-open){
 
 .mt-4{
   margin-top: 1rem;
+}
+
+.mt-10{
+  margin-top: 2.5rem;
+}
+
+.mb-10{
+  margin-bottom: 2.5rem;
+}
+
+.mb-16{
+  margin-bottom: 4rem;
 }
 
 .block{
@@ -8252,6 +8268,10 @@ html:has(.drawer-open.drawer-open){
 
 .h-full{
   height: 100%;
+}
+
+.h-screen{
+  height: 100vh;
 }
 
 .max-h-72{

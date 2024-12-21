@@ -19,26 +19,37 @@ const Category = () => {
 
 	useEffect(() => {
 		handleCategory()
-	}, [])
+	}, [id])
 
 	return (
 		<section className='min-h-screen'>
-			<div className="grid w-full grid-cols-3 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 px-10">
 
-				{posts.slice(handleSliceForBigPage(currentPage)).map((data, i) => (
-					<div key={i}>
-						<BlockBlogCard {...data} />
+			{
+				posts.length > 0 ? (<div>
+					<div className="grid w-full grid-cols-3 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 px-10 min-h-screen">
+
+						{posts.slice(handleSliceForBigPage(currentPage)).map((data, i) => (
+							<div key={i}>
+								<BlockBlogCard {...data} />
+							</div>
+						))}
 					</div>
-				))}
-			</div>
 
 
-			<div className="my-6 w-full border-t-only flex justify-center p-2 border-base-content">
-				<Pagination pageValue={currentPage}
-					handleLeftClick={() => setCurrentPage((currentPage - 1) < 1 ? 1 : currentPage - 1)}
-					handleRightClick={() => setCurrentPage(currentPage + 1)}
-				/>
-			</div>
+					<div className="my-6 w-full border-t-only flex justify-center p-2 border-base-content">
+						<Pagination pageValue={currentPage}
+							handleLeftClick={() => setCurrentPage((currentPage - 1) < 1 ? 1 : currentPage - 1)}
+							handleRightClick={() => setCurrentPage(currentPage + 1)}
+						/>
+					</div>
+
+				</div>) : (
+					<div className='w-full h-screen flex justify-center items-center'>
+						<span className="loading loading-ring loading-lg"></span>
+					</div>
+				)
+			}
+
 
 		</section>
 	)

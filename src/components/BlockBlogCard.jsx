@@ -4,17 +4,21 @@ import LikeTag from "./LikeTag"
 import ShareTag from "./ShareTag"
 import ViewTag from "./ViewTag"
 import { Suspense } from "react"
+import { Link } from "react-router-dom"
 
 const BlockBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes, views, created_at }) => {
 	return (
 
 		<Suspense fallback={<div className="skeleton h-32 w-32"></div>}>
 			<div className="flex flex-col flex-1 justify-center items-start gap-2 blog-post-card">
-				<img
-					src={featured_image}
-					alt={slug || 'generic-image'}
-					className="object-fit h-48 rounded-md w-full btn-bounce"
-				/>
+		
+				<Link to={`/posts/${_id}`} className='w-full'>
+					<img
+						src={featured_image}
+						alt={slug || 'generic-image'}
+						className="object-fit h-48 rounded-md w-full btn-bounce"
+					/>
+				</Link>
 
 				<p className="post-text-date">{new Date(created_at).toLocaleString()}</p>
 

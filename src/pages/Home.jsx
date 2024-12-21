@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import LargePageTitle from "../components/LargePageTitle"
 import Pagination from "../components/Pagination"
 import { getRecentPosts } from "../api/ApiHandler"
-import { AUTH, handleSliceForSmallPage} from "../utility";
+import { AUTH, handleSliceForSmallPage } from "../utility";
 const LargeBlogCard = React.lazy(() => import("../components/LargeBlogCard"));
 const BlockBlogCard = React.lazy(() => import("../components/BlockBlogCard"));
 
@@ -29,25 +29,28 @@ const Home = () => {
 				</div>
 				<h1 className="text-header-content">Recent blog posts</h1>
 
-				<div className="grid grid-rows-2 grid-cols-2 max-md:grid-rows-1 max-md:grid-cols-1 gap-6 min-h-96">
+				{
+					recentPosts.length > 0 ? (
+						<>
+							<div className="grid grid-rows-2 grid-cols-2 max-md:grid-rows-1 max-md:grid-cols-1 gap-6 min-h-96">
 
-					{/* {dummyPosts.slice(0, 4).map((data, i) => (
-						<div key={i}>
-							<LargeBlogCard {...data} />
-						</div>
-					))} */}
+								{recentPosts.slice(0, 4).map((data, i) => (
+									<div key={i}>
+										<LargeBlogCard {...data} />
+									</div>
+								))}
 
-					{recentPosts.slice(0, 4).map((data, i) => (
-						<div key={i}>
-							<LargeBlogCard {...data} />
-						</div>
-					))}
+							</div>
 
-				</div>
+							<div>
+								<h1 className="text-header-content">All blog posts</h1>
+							</div>
+						</>
+					) : (<div className='w-full h-screen flex justify-center items-center'>
+						<span className="loading loading-ring loading-lg"></span>
+					</div>)
+				}
 
-				<div>
-					<h1 className="text-header-content">All blog posts</h1>
-				</div>
 
 			</div>
 

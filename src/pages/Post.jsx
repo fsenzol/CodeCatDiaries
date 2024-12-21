@@ -18,8 +18,6 @@ const Post = () => {
   const handlePost = async () => {
     const post = await getAllPostById(id, AUTH.USERNAME, AUTH.PASSWORD, AUTH.URL, AUTH.SECRET)
     setPost(post.data.posts)
-
-    console.log(post.data)
   }
 
 
@@ -27,9 +25,8 @@ const Post = () => {
     handlePost()
   }, [])
 
-
-  return (
-    <section className="min-h-screen">
+  const postBody = () => (
+    <>
       <div>
         <img
           src={post.featured_image}
@@ -64,6 +61,16 @@ const Post = () => {
           </ReactMarkdown>
         </div>
       </div>
+    </>
+  )
+
+  return (
+    <section className="min-h-screen">
+      {post.title ? postBody() : (
+        <div className='w-full h-screen flex justify-center items-center'>
+          <span className="loading loading-ring loading-lg"></span>
+        </div>
+      )}
     </section>
   )
 }
