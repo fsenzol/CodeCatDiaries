@@ -10,7 +10,6 @@ import Projects from './pages/Projects'
 import Footer from './pages/Footer'
 import Newsletter from './pages/Newsletter'
 import Post from './pages/Post'
-import test from './constants/test.md'
 import { dummyPosts, markdown } from './constants'
 
 
