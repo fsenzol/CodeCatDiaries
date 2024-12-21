@@ -8205,6 +8205,14 @@ html:has(.drawer-open.drawer-open){
   margin-bottom: 4rem;
 }
 
+.mb-6{
+  margin-bottom: 1.5rem;
+}
+
+.mb-4{
+  margin-bottom: 1rem;
+}
+
 .block{
   display: block;
 }
@@ -8699,6 +8707,10 @@ html:has(.drawer-open.drawer-open){
 
 .leading-tight{
   line-height: 1.25;
+}
+
+.leading-3{
+  line-height: .75rem;
 }
 
 .tracking-normal{

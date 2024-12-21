@@ -40,14 +40,14 @@ const Post = () => {
         <h1 className="text-4xl font-bold my-4">{post.title}</h1>
         <p className="font-roboto font-semibold">{post.summary}</p>
 
-        <div className="font-kanit flex flex-1 flex-col grow text-justify leading-normal tracking-normal">
+        <div className="font-lato flex flex-1 flex-col grow text-justify leading-normal tracking-normal mb-10">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
               h1: ({ node, ...props }) => <h1 className="text-3xl font-bold my-4 text-pretty" {...props} />,
               h2: ({ node, ...props }) => <h2 className="text-2xl font-bold my-2 text-pretty" {...props} />,
               h3: ({ node, ...props }) => <h3 className="text-xl font-semibold my-1 text-pretty" {...props} />,
-              strong: ({ node, ...props }) => <strong className="font-bold" {...props} />,
+              strong: ({ node, ...props }) => <strong className="font-bold text-lg leading-relaxed" {...props} />,
               em: ({ node, ...props }) => <em className="italic" {...props} />,
               p: ({ node, ...props }) => <p className="my-4 text-base leading-relaxed" {...props} />,
               ul: ({ node, ...props }) => <ul className="list-disc pl-6" {...props} />,
