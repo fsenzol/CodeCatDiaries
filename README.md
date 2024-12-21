@@ -62,3 +62,4 @@ Thanks @ figma community for thier awesome template
 Thanks to anyone i missed :P
 
 LIVE SITE: [CodeCatDiares](https://codecatblog.vercel.app)
+LIVE SITE-ADMIN-PORTAL(MINI): [CodeCatDiares-Portal](https://codecat-admin.vercel.app)
