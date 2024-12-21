@@ -8254,6 +8254,10 @@ html:has(.drawer-open.drawer-open){
   height: 100%;
 }
 
+.max-h-72{
+  max-height: 18rem;
+}
+
 .min-h-80{
   min-height: 20rem;
 }

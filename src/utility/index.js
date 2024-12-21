@@ -14,8 +14,8 @@ export const handleSliceForBigPage = (currentPage) => {
 };
 
 export const AUTH = {
-	USERNAME: import.meta.env.VITE_USERNAME,
-	PASSWORD: import.meta.env.VITE_PASS,
-	URL: import.meta.env.VITE_API_URL,
+	USERNAME: import.meta.env.USERNAME,
+	PASSWORD: import.meta.env.PASS,
+	URL: import.meta.env.API_URL,
 	SECRET: import.meta.env.SECRET
 }
