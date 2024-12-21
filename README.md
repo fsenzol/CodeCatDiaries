@@ -22,8 +22,6 @@ Discover and contribute to open-source projects featured on the platform. CodeCa
 
 ## Technologies Powering CodeCatDiaries  
 
-CodeCatDiaries isn't just a blog—it's a testament to modern web development practices. Here are the key technologies that power the site:  
-
 - **React and JSX**  
   The blog's front-end is built with React, leveraging the simplicity and flexibility of JSX for a seamless and dynamic user experience.  
 
@@ -61,4 +59,4 @@ I'm super greatful to @JSMastery like you guys thought me every single thingy i 
 
 Thanks @ figma community for thier awesome template
 
-**Start exploring today. Your next big idea awaits!** 🚀  
+Thanks to anyone i missed :P
