@@ -104,8 +104,6 @@ export const createPost = async (data, username, password, URL) => {
 			headers: headers(auth.token)
 		})
 
-		Date.now().toString
-
 		return {
 			status: 0,
 			data: res.data.data
