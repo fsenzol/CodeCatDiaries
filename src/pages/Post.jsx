@@ -5,8 +5,8 @@ import { getAllPostById } from '../api/ApiHandler'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AUTH } from '../utility'
-
-
+import 'prismjs/themes/prism-tomorrow.css';
+import Prism from 'prismjs'
 
 
 
@@ -25,13 +25,17 @@ const Post = () => {
     handlePost()
   }, [])
 
+  useEffect(() => {
+    Prism.highlightAll()
+  }, [post])
+
   const postBody = () => (
     <>
       <div>
         <img
           src={post.featured_image}
           alt={post.slug || 'image'}
-          className="max-w-h w-full inset-0 h-96 object-cover rounded-sm"
+          className="max-w-h w-full inset-0 h-96 object-fit rounded-sm"
         />
       </div>
 
@@ -55,7 +59,19 @@ const Post = () => {
               a: ({ node, ...props }) => <a className="text-link underline hover:text-green-700" {...props} />,
               img: ({ src, alt }) => <ImgRenderer src={src} alt={alt} />,
 
+              code: ({ node, inline, className, children, ...props }) => {
+                if (inline) {
+                  return <code className="bg-black px-1 shadow-xl py-0.5 rounded text-sm font-lato text-gray-800" {...props}>{children}</code>;
+                }
+                return (
+                  <pre className="bg-black text-white p-4 rounded-md font-lato shadow-xl overflow-x-auto">
+                    <code className={className} {...props}>{children}</code>
+                  </pre>
+                );
+              },
+
             }}
+            
           >
             {post.content}
           </ReactMarkdown>
