@@ -5,7 +5,7 @@ import { getAllPostById } from '../api/ApiHandler'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AUTH } from '../utility'
-import 'prismjs/themes/prism-tomorrow.css';
+import "../../styles/gruvbox.css"
 import Prism from 'prismjs'
 
 
