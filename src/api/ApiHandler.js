@@ -322,7 +322,7 @@ export const getAllCategories = async () => {
 export const likePost = async (id) => {
 	try {
 		const auth = await generateToken()
-		
+
 		const res = await axios.post(`${AUTH.URL}/posts/reaction/like/${id}`, {
 			headers: headers(auth.token)
 		})
@@ -334,7 +334,7 @@ export const likePost = async (id) => {
 	} catch (err) {
 		return {
 			status: 1,
-			reason: err.response.data.message
+			reason: err.response
 		}
 	}
 }
@@ -342,7 +342,8 @@ export const likePost = async (id) => {
 export const UnlikePost = async (id) => {
 	try {
 		const auth = await generateToken()
-		console.log(auth)
+
+		
 		const res = await axios.post(`${AUTH.URL}/posts/reaction/unlike/${id}`, {
 			headers: headers(auth.token)
 		})
@@ -354,7 +355,7 @@ export const UnlikePost = async (id) => {
 	} catch (err) {
 		return {
 			status: 1,
-			reason: err.response.data.message
+			reason: err.response
 		}
 	}
 }
