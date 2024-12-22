@@ -9,7 +9,7 @@ const ShareTag = React.lazy(() => import('./ShareTag'));
 
 const LargeBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes, views, created_at }) => {
 	return (
-		<div className="flex flex-col flex-1 justify-center items-start gap-2 blog-post-card">
+		<div className="flex flex-col flex-1 justify-center items-start gap-2 blog-post-card select-none">
 			<Link to={`/posts/${_id}`} className='w-full'>
 				<img
 					src={featured_image}

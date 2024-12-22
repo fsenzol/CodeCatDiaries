@@ -12,6 +12,7 @@ import Newsletter from './pages/Newsletter'
 import Post from './pages/Post'
 import Category from './pages/Category'
 import About from './pages/About'
+import Search from './pages/Search'
 
 
 
@@ -30,9 +31,8 @@ function App() {
 						<Route path='/category/:id' element={<Category />} />
 						<Route path='/newsletter' element={<Newsletter />} />
 						<Route path='/posts/:id' element={<Post />} />
-						<Route path='/search/name/:name' element={<Post />} />
-						<Route path='/search/tag/:tag' element={<Post />} />
-						<Route path='/search/cat/:id' element={<Category />} />
+						<Route path='/search/name/:name' element={<Search />} />
+						<Route path='/search/tag/:tag' element={<Search />} />
 					</Routes>
 				</section>
 			</BrowserRouter>

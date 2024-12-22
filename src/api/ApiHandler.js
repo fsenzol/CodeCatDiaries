@@ -1,4 +1,5 @@
 import axios from "axios"
+import { AUTH } from "../utility"
 
 const headers = (auth, secret) => ({
 	'Content-Type': 'application/json',
@@ -9,7 +10,7 @@ const headers = (auth, secret) => ({
 
 // 0 for success 1 for failure!
 
-export const generateToken = async (username, password, URL, SECRET) => {
+export const generateToken = async () => {
 
 	// try {
 	// 	const obj = JSON.parse(localStorage.getItem('tokenJson'))
@@ -26,14 +27,13 @@ export const generateToken = async (username, password, URL, SECRET) => {
 	// 	}
 	// } catch (ignore) { }
 
-
 	try {
 
-		const response = await axios.post(`${URL}/authors/token`, {
-			username,
-			password
+		const response = await axios.post(`${AUTH.URL}/authors/token`, {
+			username: AUTH.USERNAME,
+			password: AUTH.PASSWORD
 		}, {
-			headers: headers(null, SECRET)
+			headers: headers(null, AUTH.SECRET)
 		})
 
 		const tokenJson = {
@@ -57,11 +57,11 @@ export const generateToken = async (username, password, URL, SECRET) => {
 }
 
 
-export const searchAuthorByName = async (author_name, username, password, URL, SECRET) => {
+export const searchAuthorByName = async (author_name) => {
 	try {
-		const auth = await generateToken(username, password, URL, SECRET)
+		const auth = await generateToken()
 
-		const res = await axios.get(`${URL}/authors/search/${author_name}`, {
+		const res = await axios.get(`${AUTH.URL}/authors/search/${author_name}`, {
 			headers: headers(auth.token)
 		})
 
@@ -82,11 +82,11 @@ export const searchAuthorByName = async (author_name, username, password, URL, S
 
 // searchAuthorByName('basedcatx', 'basedcatx', 'Stylisticboy12@based')
 
-export const getAllPosts = async (username, password, URL, SECRET) => {
+export const getAllPosts = async () => {
 	try {
-		const auth = await generateToken(username, password, URL, SECRET)
+		const auth = await generateToken()
 
-		const res = await axios.get(`${URL}/posts/`, {
+		const res = await axios.get(`${AUTH.URL}/posts/`, {
 			headers: headers(auth.token)
 		})
 
@@ -103,11 +103,11 @@ export const getAllPosts = async (username, password, URL, SECRET) => {
 }
 
 
-export const createPost = async (data, username, password, URL, SECRET) => {
+export const createPost = async (data) => {
 	try {
-		const auth = await generateToken(username, password, URL, SECRET)
+		const auth = await generateToken()
 
-		const res = await axios.post(`${URL}/posts/create`, data, {
+		const res = await axios.post(`${AUTH.URL}/posts/create`, data, {
 			headers: headers(auth.token)
 		})
 
@@ -125,11 +125,11 @@ export const createPost = async (data, username, password, URL, SECRET) => {
 
 //getAllPosts('basedcatx', 'Stylisticboy12@based')
 
-export const getAllPostById = async (id, username, password, URL, SECRET) => {
+export const getAllPostById = async (id) => {
 	try {
-		const auth = await generateToken(username, password, URL, SECRET)
+		const auth = await generateToken()
 
-		const res = await axios.get(`${URL}/posts/${id}`, {
+		const res = await axios.get(`${AUTH.URL}/posts/${id}`, {
 			headers: headers(auth.token)
 		})
 
@@ -145,11 +145,11 @@ export const getAllPostById = async (id, username, password, URL, SECRET) => {
 	}
 }
 
-export const getAllPostByCategory = async (id, username, password, URL, SECRET) => {
+export const getAllPostByCategory = async (id) => {
 	try {
-		const auth = await generateToken(username, password, URL, SECRET)
+		const auth = await generateToken()
 
-		const res = await axios.get(`${URL}/posts/category/${id}`, {
+		const res = await axios.get(`${AUTH.URL}/posts/category/${id}`, {
 			headers: headers(auth.token)
 		})
 
@@ -165,11 +165,11 @@ export const getAllPostByCategory = async (id, username, password, URL, SECRET) 
 	}
 }
 
-export const getAllPostByWithRatingsAbove = async (value, username, password, URL, SECRET) => {
+export const getAllPostByWithRatingsAbove = async (value) => {
 	try {
-		const auth = await generateToken(username, password, URL, SECRET)
+		const auth = await generateToken()
 
-		const res = await axios.get(`${URL}/posts/ratings[gte]=${value}}`, {
+		const res = await axios.get(`${AUTH.URL}/posts/ratings[gte]=${value}}`, {
 			headers: headers(auth.token)
 		})
 
@@ -187,12 +187,93 @@ export const getAllPostByWithRatingsAbove = async (value, username, password, UR
 
 //getAllPosts('basedcatx', 'Stylisticboy12@based')
 
-export const getAllPostsBySlug = async (slug, username, password, URL, SECRET) => {
+export const getAllPostsBySlug = async (slug) => {
 	try {
-		const auth = await generateToken(username, password, URL, SECRET)
+		const auth = await generateToken()
 
-		const res = await axios.post(`${URL}/posts/slug`, {
-			slug
+		const res = await axios.get(`${AUTH.URL}/posts/slug/all/${slug}`, {
+			headers: headers(auth.token)
+		})
+
+		return {
+			status: 0,
+			data: res.data.data
+		}
+	} catch (err) {
+		return {
+			status: 1,
+			reason: err.response.data.message
+		}
+	}
+}
+
+
+export const getRecentPosts = async (limit) => {
+	try {
+		const auth = await generateToken()
+
+		const res = await axios.get(`${AUTH.URL}/posts?sort=-created_at&limit=${limit || 4}`, {
+			headers: headers(auth.token)
+		})
+
+		return {
+			status: 0,
+			data: res.data.data.posts
+		}
+	} catch (err) {
+		return {
+			status: 1,
+			reason: err.response.data.message
+		}
+	}
+}
+
+export const getPostsByPagesAndLimit = async (page, limit) => {
+	try {
+		const auth = await generateToken()
+
+		const res = await axios.get(`${AUTH.URL}/posts?page=${page}&limit=${limit}`, {
+			headers: headers(auth.token)
+		})
+
+		return {
+			status: 0,
+			data: res.data.data
+		}
+	} catch (err) {
+		return {
+			status: 1,
+			reason: err.response.data.message
+		}
+	}
+}
+
+export const searchPostsByTitle = async (title) => {
+	try {
+		const auth = await generateToken()
+
+		const res = await axios.get(`${AUTH.URL}/posts/search/${title}`, {
+			headers: headers(auth.token)
+		})
+
+		return {
+			status: 0,
+			data: res.data.data
+		}
+	} catch (err) {
+		return {
+			status: 1,
+			reason: err.response.data.message
+		}
+	}
+}
+
+export const searchPostsByTag = async (tag) => {
+	try {
+		const auth = await generateToken()
+
+		const res = await axios.post(`${AUTH.URL}/posts/tag`, {
+			tags: [tag]
 		}, {
 			headers: headers(auth.token)
 		})
@@ -209,65 +290,7 @@ export const getAllPostsBySlug = async (slug, username, password, URL, SECRET) =
 	}
 }
 
-
-export const getRecentPosts = async (limit, username, password, URL, SECRET) => {
-	try {
-		const auth = await generateToken(username, password, URL, SECRET)
-
-		const res = await axios.get(`${URL}/posts?sort=-created_at&limit=${limit || 4}`, {
-			headers: headers(auth.token)
-		})
-
-		return {
-			status: 0,
-			data: res.data.data.posts
-		}
-	} catch (err) {
-		return {
-			status: 1,
-			reason: err.response.data.message
-		}
-	}
-}
-
-export const getPostsByPagesAndLimit = async (page, limit, username, password, URL, SECRET) => {
-	try {
-		const auth = await generateToken(username, password, URL, SECRET)
-
-		const res = await axios.get(`${URL}/posts?page=${page}&limit=${limit}`, {
-			headers: headers(auth.token)
-		})
-
-		return {
-			status: 0,
-			data: res.data.data
-		}
-	} catch (err) {
-		return {
-			status: 1,
-			reason: err.response.data.message
-		}
-	}
-}
-
-export const searchPostsByTitle = async (title, username, password, URL, SECRET) => {
-	try {
-		const auth = await generateToken(username, password, URL, SECRET)
-
-		const res = await axios.get(`${URL}/posts/search/${title}`, {
-			headers: headers(auth.token)
-		})
-
-		console.log(res.data)
-	} catch (err) {
-		return {
-			status: 1,
-			reason: err.response.data.message
-		}
-	}
-}
-
-export const getAllCategories = async (username, password, URL, SECRET) => {
+export const getAllCategories = async () => {
 	const categories = JSON.parse(localStorage.getItem('categories'))
 	if (categories) {
 		return {
@@ -276,9 +299,9 @@ export const getAllCategories = async (username, password, URL, SECRET) => {
 		}
 	}
 	try {
-		const auth = await generateToken(username, password, URL, SECRET)
+		const auth = await generateToken()
 
-		const res = await axios.get(`${URL}/categories`, {
+		const res = await axios.get(`${AUTH.URL}/categories`, {
 			headers: headers(auth.token)
 		})
 
@@ -294,3 +317,45 @@ export const getAllCategories = async (username, password, URL, SECRET) => {
 		}
 	}
 }
+
+
+export const likePost = async (id) => {
+	try {
+		const auth = await generateToken()
+		
+		const res = await axios.post(`${AUTH.URL}/posts/reaction/like/${id}`, {
+			headers: headers(auth.token)
+		})
+
+		return {
+			status: 0,
+			data: res.data.data
+		}
+	} catch (err) {
+		return {
+			status: 1,
+			reason: err.response.data.message
+		}
+	}
+}
+
+export const UnlikePost = async (id) => {
+	try {
+		const auth = await generateToken()
+		console.log(auth)
+		const res = await axios.post(`${AUTH.URL}/posts/reaction/unlike/${id}`, {
+			headers: headers(auth.token)
+		})
+
+		return {
+			status: 0,
+			data: res.data.data
+		}
+	} catch (err) {
+		return {
+			status: 1,
+			reason: err.response.data.message
+		}
+	}
+}
+

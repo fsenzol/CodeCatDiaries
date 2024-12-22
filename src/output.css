@@ -8339,6 +8339,14 @@ html:has(.drawer-open.drawer-open){
   width: 100%;
 }
 
+.w-8{
+  width: 2rem;
+}
+
+.w-6{
+  width: 1.5rem;
+}
+
 .flex-1{
   flex: 1 1 0%;
 }
@@ -9053,6 +9061,11 @@ html:has(.drawer-open.drawer-open){
   .max-sm\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .max-sm\:text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 
   .max-sm\:tracking-tighter{
