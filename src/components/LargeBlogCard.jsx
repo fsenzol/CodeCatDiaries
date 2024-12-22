@@ -1,11 +1,12 @@
 import React, { Suspense } from 'react';
 import { FaLink } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import LikeTag from './LikeTag';
+import ViewTag from './ViewTag';
+import ShareTag from './ShareTag';
+import TagComponent from './TagComponent';
 
-const TagComponent = React.lazy(() => import('./TagComponent'));
-const LikeTag = React.lazy(() => import('./LikeTag'));
-const ViewTag = React.lazy(() => import('./ViewTag'));
-const ShareTag = React.lazy(() => import('./ShareTag'));
+
 
 const LargeBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes, views, created_at }) => {
 	return (
@@ -28,19 +29,15 @@ const LargeBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes,
 			</div>
 
 			<div className="flex w-full flex-1 flex-wrap justify-start gap-6">
-				<Suspense fallback={<div className="skeleton"></div>}>
-					{tags.map((str, i) => (
-						<TagComponent tagName={str} key={i} />
-					))}
-				</Suspense>
+				{tags.map((str, i) => (
+					<TagComponent tagName={str} key={i} />
+				))}
 			</div>
 
 			<div className="flex my-4 gap-6">
-				<Suspense fallback={<div className="skeleton"></div>}>
-					<LikeTag likes={likes} id={_id} />
-					<ViewTag views={views} />
-					<ShareTag id={_id} />
-				</Suspense>
+				<LikeTag likes={likes} id={_id} />
+				<ViewTag views={views} />
+				<ShareTag id={_id} />
 			</div>
 		</div>
 	);

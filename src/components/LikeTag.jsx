@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { likePost, UnlikePost } from '../api/ApiHandler';
 
-const LikeTag = ({ _id, likes }) => {
-    const [liked, setLiked] = useState(localStorage.getItem(`liked-${_id}`) === 'true'); 
+const LikeTag = ({ id, likes }) => {
+    const [liked, setLiked] = useState(localStorage.getItem(`liked-${id}`) === 'true'); 
     const [lvalue, setLvalue] = useState(likes);
-
+    
     const parseLikes = () => {
         const likeNumber = lvalue * 1 || 0;
         if (likeNumber > 1000) {
@@ -16,7 +16,7 @@ const LikeTag = ({ _id, likes }) => {
     };
 
     const setLike = (f) => {
-        localStorage.setItem(`liked-${_id}`, f);
+        localStorage.setItem(`liked-${id}`, f);
         setLiked(f);
     };
 
@@ -25,8 +25,8 @@ const LikeTag = ({ _id, likes }) => {
         if (!liked) {
             setLvalue((prevLValue) => prevLValue + 1);
             setLike(true);
-
-            const res = await likePost(_id);
+            
+            const res = await likePost(id);
             if (res.status * 1 !== 0) {
                 setLvalue((prevLValue) => prevLValue - 1); 
                 setLike(false);
@@ -39,7 +39,7 @@ const LikeTag = ({ _id, likes }) => {
             setLvalue((prevLValue) => prevLValue > 0 ? prevLValue - 1 : 0); 
             setLike(false);
 
-            const res = await UnlikePost(_id);
+            const res = await UnlikePost(id);
             if (res.status * 1 !== 0) {
                 setLvalue((prevLValue) => prevLValue + 1);
                 setLike(true);
