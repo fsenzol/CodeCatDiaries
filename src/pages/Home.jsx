@@ -54,7 +54,7 @@ const Home = () => {
 
 			</div>
 
-			<div className="grid w-full grid-cols-3 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 min-h-80 md:px-10 max-md:p-4">
+			<div className="grid w-full xl:grid-cols-3 md:grid-cols-2 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 min-h-80 md:px-10 max-md:p-4">
 				{/* {dummyPosts.slice(5, 11).map((data, i) => (
 					<div key={i}>
 						<BlockBlogCard {...data} />
