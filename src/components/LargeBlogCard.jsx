@@ -24,7 +24,7 @@ const LargeBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes,
 			<p className="post-text-date">{new Date(created_at).toLocaleString()}</p>
 
 			<div className="flex flex-1 w-full justify-between items-center">
-				<h2 className="font-semibold font-lato text-2xl">{title}</h2>
+				<h2 className="font-semibold font-lato text-2xl text-pretty">{title}</h2>
 				<button className="btn btn-ghost"><FaLink /></button>
 			</div>
 

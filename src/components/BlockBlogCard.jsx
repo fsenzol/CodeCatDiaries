@@ -22,8 +22,8 @@ const BlockBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes,
 
 				<p className="post-text-date select-none">{new Date(created_at).toLocaleString()}</p>
 
-				<div className="flex flex-1 w-96 justify-between items-center">
-					<h2 className="font-semibold font-lato text-xl">{title}</h2>
+				<div className="flex flex-1 w-full justify-between items-center">
+					<h2 className="font-semibold font-lato text-xl text-pretty">{title}</h2>
 				</div>
 
 				{/* <p className="leading-tight font-roboto break-words text-lg">{postBody}</p> */}
