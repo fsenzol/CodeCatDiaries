@@ -23,7 +23,7 @@ const Home = () => {
 	}, [])
 
 	return (
-		<section className="relative">
+		<section className="relative min-h-screen">
 			<div className="flex justify-start flex-col">
 				<div className="md:px-10 max-md:p-4">
 					<LargePageTitle defaultSize="150px" maxSize="90px" name={"THE BLOG"} font={"roboto"} />
