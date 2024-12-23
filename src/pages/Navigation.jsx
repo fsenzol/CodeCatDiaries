@@ -28,7 +28,7 @@ const Navigation = () => {
 
 
 	return (
-		<header className='fixed top-0 start-0 p-1 w-full uppercase text-md z-50 font-montserrat shadow-2xl rounded-b-2xl bg-gradient-to-b from-black/65 to-transparent backdrop-blur-[2px]'>
+		<header className='fixed top-0 start-0 p-1 w-full uppercase text-md z-50 font-montserrat shadow-2xl rounded-b-2xl bg-gradient-to-b from-black/65 to-transparent backdrop-blur-[1px]'>
 			<div className='flex w-full flex-row justify-between flex-1 gap-2 p-2 items-center card-action'>
 				<p className='cursor-zoom-in font-kanit font-bold tracking-wider max-sm:text-[15px] max-sm:tracking-tighter'>The Based Blog</p>
 				<div className='max-md:hidden'>
