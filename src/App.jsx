@@ -12,6 +12,7 @@ import Post from './pages/Post'
 import Category from './pages/Category'
 import About from './pages/About'
 import Search from './pages/Search'
+import { HelmetProvider } from 'react-helmet-async'
 
 
 
@@ -19,23 +20,25 @@ function App() {
 
 	return (
 		<main>
-			<BrowserRouter >
-				<Navigation />
-				<section className='mt-24'>
-					<Routes>
-						<Route path='*' element={<Home />} />
-						<Route path='/home' element={<Home />} />
-						<Route path='/blog' element={<Home />} />
-						<Route path='/about' element={<About />} />
-						<Route path='/category/:id' element={<Category />} />
-						<Route path='/newsletter' element={<Newsletter />} />
-						<Route path='/posts/:id' element={<Post />} />
-						<Route path='/search/name/:name' element={<Search />} />
-						<Route path='/search/tag/:tag' element={<Search />} />
-					</Routes>
-				</section>
-			</BrowserRouter>
-			<Footer />
+			<HelmetProvider>
+				<BrowserRouter >
+					<Navigation />
+					<section className='mt-24'>
+						<Routes>
+							<Route path='*' element={<Home />} />
+							<Route path='/home' element={<Home />} />
+							<Route path='/blog' element={<Home />} />
+							<Route path='/about' element={<About />} />
+							<Route path='/category/:id' element={<Category />} />
+							<Route path='/newsletter' element={<Newsletter />} />
+							<Route path='/posts/:id' element={<Post />} />
+							<Route path='/search/name/:name' element={<Search />} />
+							<Route path='/search/tag/:tag' element={<Search />} />
+						</Routes>
+					</section>
+				</BrowserRouter>
+				<Footer />
+			</HelmetProvider>
 		</main>
 	)
 }

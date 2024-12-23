@@ -11,6 +11,8 @@ import MaterialOL from '../components/MaterialOL'
 import LikeTag from '../components/LikeTag'
 import ViewTag from '../components/ViewTag'
 import ShareTag from '../components/ShareTag'
+import { Helmet } from 'react-helmet-async'
+
 
 
 
@@ -63,6 +65,19 @@ const Post = () => {
 
   const postBody = () => (
     <>
+      <Helmet>
+        <title>{post.title}</title>
+        <meta property='og:title' content={post.title} />
+        <meta property='og:description' content={post.summary} />
+        <meta property='og:image' content={post.featured_image} />
+        <meta property='og:url' content={`${window.location.origin}/posts/${post.id}`} />
+        <meta property='og:type' content='article' />
+        <meta property='twitter:card' content="summary_large_image" />
+        <meta property='twitter:title' content={post.title} />
+        <meta property='twitter:description' content={post.summary} />
+        <meta property='twitter:image' content={post.featured_image} />
+
+      </Helmet>
       <div>
         <img
           src={post.featured_image}
