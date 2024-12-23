@@ -47,6 +47,7 @@ const Post = () => {
 
   useEffect(() => {
     handlePost()
+  
   }, [])
 
   useEffect(() => {
@@ -57,6 +58,7 @@ const Post = () => {
 
   useEffect(() => {
     Prism.highlightAll()
+    calculateMargin()
   }, [post])
 
   const postBody = () => (
