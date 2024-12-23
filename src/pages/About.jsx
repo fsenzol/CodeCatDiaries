@@ -31,7 +31,7 @@ const About = () => {
 				<div>
 					<li className='mx-8 text-accent'>
 						{Attributions.map(({ name, link }, i) => (
-							<a className='text-accent font-bold' href={link} target='_blank'>{name}</a>
+							<a className='text-accent font-bold' key={i} href={link} target='_blank'>{name}</a>
 						))}
 					</li>
 				</div>

@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Navigation from './pages/Navigation'
 import Home from './pages/Home'
-import Projects from './pages/Projects'
 import Footer from './pages/Footer'
 import Newsletter from './pages/Newsletter'
 import Post from './pages/Post'
