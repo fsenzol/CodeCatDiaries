@@ -14,7 +14,8 @@ const Category = () => {
 
 	const handleCategory = async () => {
 		const categories = await getAllPostByCategory(id, AUTH.USERNAME, AUTH.PASSWORD, AUTH.URL, AUTH.SECRET)
-		if (categories.data.staus === 0) {
+
+		if (categories.status === 0) {
 			return setPosts(categories.data.posts)
 		}
 		setTimeout(() => {
@@ -32,7 +33,7 @@ const Category = () => {
 
 			{
 				posts.length > 0 ? (<div>
-					<div className="flex-row flex justify-around w-full flex-wrap gap-3 px-10 min-h-screen">
+					<div className=" grid flex-row max-sm:grid-cols-1 max-lg:grid-cols-2 grid-cols-3 xl:grid-cols-4  justify-around w-full flex-wrap gap-3 px-10 min-h-screen">
 
 						{posts.slice(handleSliceForBigPage(currentPage)).map((data, i) => (
 							<div key={i}>
