@@ -16,7 +16,7 @@ const LargeBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes,
 					src={featured_image}
 					alt={slug || 'generic-image'}
 					width={300}
-					className="object-fit aspect-square h-fit max-h-72 w-full rounded-md btn-bounce"
+					className="object-cover aspect-auto h-auto max-h-96 w-full rounded-md btn-bounce"
 				/>
 			</Link>
 

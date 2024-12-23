@@ -9,7 +9,7 @@ const ImgRenderer = ({ src, alt, title }) => {
 				title={title}
 				width={300}
 				loading='lazy'
-				className='object-fit my-4 max-h-72'
+				className='object-fit aspect-auto my-4 h-auto max-h-72'
 			/>
 		</div>
 

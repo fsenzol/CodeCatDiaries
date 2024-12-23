@@ -16,7 +16,7 @@ const BlockBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes,
 					<img
 						src={featured_image}
 						alt={slug || 'generic-image'}
-						className="object-fit h-48 rounded-md w-full btn-bounce"
+						className="object-fit max-h-72 h-auto aspect-auto rounded-md w-full btn-bounce"
 					/>
 				</Link>
 
