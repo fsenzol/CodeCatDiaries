@@ -22,7 +22,6 @@ const Home = () => {
 
 		setTimeout(() => {
 			updateRecentPosts()
-			console.log("Reloading")
 		}, 5000)
 		
 	}
@@ -42,7 +41,7 @@ const Home = () => {
 				{
 					recentPosts.length > 0 ? (
 						<>
-							<div className="min-h-96 w-full">
+							<div className="min-h-96 w-full rounded-md">
 
 								<Carousel>
 									{recentPosts.slice(0, 4).map((data, i) => (
@@ -56,7 +55,7 @@ const Home = () => {
 							</div>
 
 
-							<div>
+							<div className="bg-transparent rounded-md py-2">
 								<h1 className="text-header-content md:px-10 max-md:p-4">All blog posts</h1>
 							</div>
 						</>

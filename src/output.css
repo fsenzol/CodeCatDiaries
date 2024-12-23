@@ -8181,6 +8181,11 @@ html:has(.drawer-open.drawer-open){
   grid-row-start: 1;
 }
 
+.mx-8{
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 .my-1{
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
@@ -8199,11 +8204,6 @@ html:has(.drawer-open.drawer-open){
 .my-6{
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-}
-
-.mx-8{
-  margin-left: 2rem;
-  margin-right: 2rem;
 }
 
 .mb-10{
@@ -8372,10 +8372,6 @@ html:has(.drawer-open.drawer-open){
   width: 100%;
 }
 
-.w-2{
-  width: 0.5rem;
-}
-
 .flex-1{
   flex: 1 1 0%;
 }
@@ -8520,10 +8516,6 @@ html:has(.drawer-open.drawer-open){
   text-wrap: nowrap;
 }
 
-.text-balance{
-  text-wrap: balance;
-}
-
 .text-pretty{
   text-wrap: pretty;
 }
@@ -8542,6 +8534,10 @@ html:has(.drawer-open.drawer-open){
 
 .rounded-full{
   border-radius: 9999px;
+}
+
+.rounded-lg{
+  border-radius: 0.5rem;
 }
 
 .rounded-md{
@@ -8643,10 +8639,6 @@ html:has(.drawer-open.drawer-open){
   fill: #ef4444;
 }
 
-.fill-red-700{
-  fill: #b91c1c;
-}
-
 .stroke-base-100{
   stroke: var(--fallback-b1,oklch(var(--b1)/1));
 }
@@ -8722,11 +8714,6 @@ html:has(.drawer-open.drawer-open){
   padding-bottom: 1rem;
 }
 
-.px-8{
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 .pl-3{
   padding-left: 0.75rem;
 }
@@ -8735,16 +8722,16 @@ html:has(.drawer-open.drawer-open){
   padding-left: 1.5rem;
 }
 
+.pt-1{
+  padding-top: 0.25rem;
+}
+
 .pt-4{
   padding-top: 1rem;
 }
 
 .pt-6{
   padding-top: 1.5rem;
-}
-
-.pt-1{
-  padding-top: 0.25rem;
 }
 
 .text-center{
@@ -8823,16 +8810,16 @@ html:has(.drawer-open.drawer-open){
   font-weight: 300;
 }
 
+.font-medium{
+  font-weight: 500;
+}
+
 .font-semibold{
   font-weight: 600;
 }
 
 .font-thin{
   font-weight: 100;
-}
-
-.font-medium{
-  font-weight: 500;
 }
 
 .uppercase{
@@ -8863,6 +8850,11 @@ html:has(.drawer-open.drawer-open){
   letter-spacing: 0.05em;
 }
 
+.text-accent{
+  --tw-text-opacity: 1;
+  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
+}
+
 .text-base-content{
   --tw-text-opacity: 1;
   color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity, 1)));
@@ -8891,16 +8883,6 @@ html:has(.drawer-open.drawer-open){
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.text-lime-400{
-  --tw-text-opacity: 1;
-  color: rgb(163 230 53 / var(--tw-text-opacity, 1));
-}
-
-.text-accent{
-  --tw-text-opacity: 1;
-  color: var(--fallback-a,oklch(var(--a)/var(--tw-text-opacity, 1)));
 }
 
 .underline{
@@ -9075,8 +9057,8 @@ html:has(.drawer-open.drawer-open){
   --tw-border-opacity: 1;
   border-color: var(--fallback-nc,oklch(var(--nc)/var(--tw-border-opacity, 1)));
   padding: 1rem;
-  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 

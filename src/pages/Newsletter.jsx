@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { getRecentPosts } from '../api/ApiHandler'
 import BlockBlogCard from '../components/BlockBlogCard'
 import EmailBar from '../components/EmailBar'
 import Pagination from '../components/Pagination'
 import { AUTH } from '../utility'
+import Carousel from '../components/Carousel'
 
 const Newsletter = () => {
 	const [recentPosts, setRecentPosts] = useState([])
@@ -20,7 +21,6 @@ const Newsletter = () => {
 	return (
 		<section>
 			<div className='flex justify-center items-center w-full flex-col gap-10'>
-				<h1 className='text-lg text-primary'>Newsletters</h1>
 				<h3 className='font-kanit text-7xl max-sm:text-4xl font-bold'>Stories and interviews</h3>
 				<p className='w-2/3 text-center font-kanit text-xl'>Subscribe to learn about new product features, the latest in technology, solutions and updates.</p>
 				<EmailBar />
@@ -34,14 +34,15 @@ const Newsletter = () => {
 			{
 				recentPosts.length > 0 ? (
 					<>
-						<div className="grid w-full grid-cols-3 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 px-10 max-md:px-4 min-h-80 mb-16">
-
-							{recentPosts.slice(0, 6).map((data, i) => (
-								<div key={i}>
-									<BlockBlogCard {...data} />
+						<Carousel>
+							{recentPosts.slice(4).map((data, i) => (
+								<div key={i} className="carousel-item w-1/2">
+									<Suspense fallback={<div className="loading loading-lg"></div>}>
+										<BlockBlogCard {...data} />
+									</Suspense>
 								</div>
 							))}
-						</div>
+						</Carousel>
 					</>
 				) : (
 					<div className='w-full h-screen flex justify-center items-center'>

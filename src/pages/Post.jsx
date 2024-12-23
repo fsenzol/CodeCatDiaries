@@ -28,7 +28,11 @@ const Post = () => {
 
 
   const calculateMargin = () => {
-    if (!imageRef.current) return
+    if (!imageRef.current) {
+      return setTimeout(() => {
+        calculateMargin()
+      }, 1000)
+    }
     return divRef.current.style.marginTop = `${imageRef.current.clientHeight}px`
   }
 
