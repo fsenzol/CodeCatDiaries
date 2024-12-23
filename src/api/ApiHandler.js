@@ -97,7 +97,7 @@ export const getAllPosts = async () => {
 	} catch (err) {
 		return {
 			status: 1,
-			reason: err.response.data.message
+			reason: err && err.response && err.response.data.message || 'Network error' 
 		}
 	}
 }
@@ -140,7 +140,7 @@ export const getAllPostById = async (id) => {
 	} catch (err) {
 		return {
 			status: 1,
-			reason: err.response.data.message
+			reason: err && err.response && err.response.data.message || 'Network error' 
 		}
 	}
 }
@@ -160,7 +160,7 @@ export const getAllPostByCategory = async (id) => {
 	} catch (err) {
 		return {
 			status: 1,
-			reason: err.response.data.message
+			reason: err && err.response && err.response.data.message || 'Network error' 
 		}
 	}
 }
@@ -180,7 +180,7 @@ export const getAllPostByWithRatingsAbove = async (value) => {
 	} catch (err) {
 		return {
 			status: 1,
-			reason: err.response.data.message
+			reason: err && err.response && err.response.data.message || 'Network error' 
 		}
 	}
 }
@@ -202,7 +202,7 @@ export const getAllPostsBySlug = async (slug) => {
 	} catch (err) {
 		return {
 			status: 1,
-			reason: err.response.data.message
+			reason: err && err.response && err.response.data.message || 'Network error' 
 		}
 	}
 }
@@ -223,7 +223,7 @@ export const getRecentPosts = async (limit) => {
 	} catch (err) {
 		return {
 			status: 1,
-			reason: err.response.data.message
+			reason: err && err.response && err.response.data.message || 'Network error' 
 		}
 	}
 }
@@ -313,7 +313,7 @@ export const getAllCategories = async () => {
 	} catch (err) {
 		return {
 			status: 1,
-			reason: err.response.data.message
+			reason: err && err.response && err.response.data.message || 'Network error' 
 		}
 	}
 }
@@ -323,7 +323,7 @@ export const likePost = async (id) => {
 	try {
 		const auth = await generateToken()
 
-		const res = await axios.post(`${AUTH.URL}/posts/reaction/like/${id}`, {
+		const res = await axios.post(`${AUTH.URL}/posts/reaction/like/${id}`, {},  {
 			headers: headers(auth.token)
 		})
 
@@ -344,7 +344,7 @@ export const UnlikePost = async (id) => {
 		const auth = await generateToken()
 
 		
-		const res = await axios.post(`${AUTH.URL}/posts/reaction/unlike/${id}`, {
+		const res = await axios.post(`${AUTH.URL}/posts/reaction/unlike/${id}`, {},  {
 			headers: headers(auth.token)
 		})
 
@@ -360,3 +360,23 @@ export const UnlikePost = async (id) => {
 	}
 }
 
+export const ViewPost = async (id) => {
+	try {
+		const auth = await generateToken()
+
+		
+		const res = await axios.post(`${AUTH.URL}/posts/view/${id}`, {}, {
+			headers: headers(auth.token)
+		})
+
+		return {
+			status: 0,
+			data: res.data.data
+		}
+	} catch (err) {
+		return {
+			status: 1,
+			reason: err.response
+		}
+	}
+}

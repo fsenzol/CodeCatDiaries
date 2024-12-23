@@ -1,13 +1,16 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import ImgRenderer from '../components/ImgRenderer'
-import { getAllPostById } from '../api/ApiHandler'
+import { getAllPostById, ViewPost } from '../api/ApiHandler'
 import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AUTH } from '../utility'
 import "../../styles/gruvbox.css"
 import Prism from 'prismjs'
 import MaterialOL from '../components/MaterialOL'
+import LikeTag from '../components/LikeTag'
+import ViewTag from '../components/ViewTag'
+import ShareTag from '../components/ShareTag'
 
 
 
@@ -24,31 +27,22 @@ const Post = () => {
   }
 
 
-  // const calculateAndArrangeSizes = () => {
-  //   const content = document.querySelector('.content')
-  //   const images = content.querySelectorAll('img')
-
-  //   images.forEach(image => {
-  //     const width = image.width
-  //     const height = image.height
-
-  //     if (width > height) {
-  //       image.classList.add('w-full')
-  //     } else {
-  //       image.classList.add('h-full')
-  //     }
-  //   })  
-  // }
-
   const calculateMargin = () => {
     if (!imageRef.current) return
     return divRef.current.style.marginTop = `${imageRef.current.clientHeight}px`
   }
 
+  const updateView = async () => {
+    if (!Boolean(localStorage.getItem(`viewed-${id}`))) {
+      localStorage.setItem(`viewed-${id}`, true)
+      await ViewPost(id)
+    }
+  }
+
 
   useEffect(() => {
     handlePost()
-  
+
   }, [])
 
   useEffect(() => {
@@ -60,6 +54,7 @@ const Post = () => {
   useEffect(() => {
     Prism.highlightAll()
     calculateMargin()
+    updateView()
   }, [post])
 
   const postBody = () => (
@@ -78,6 +73,14 @@ const Post = () => {
         <h3 className="post-text-date py-2">Published: {new Date(post.created_at).toLocaleString()}</h3>
         <h1 className="text-4xl font-bold my-4">{post.title}</h1>
         <p className="font-roboto font-semibold">{post.summary}</p>
+
+        <div className="flex justify-between">
+          <div className='flex justify-start gap-4'>
+            <LikeTag likes={post.likes} id={post._id} />
+            <ViewTag views={post.views} />
+          </div>
+          <ShareTag id={post._id} summary={post.summary} title={post.title} />
+        </div>
 
         <div className="font-lato flex flex-1 flex-col grow leading-normal tracking-normal mb-10">
           <ReactMarkdown

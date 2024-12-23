@@ -6,7 +6,7 @@ import { DropdownButton } from '../components/DropdownButton'
 import SearchBar from '../components/SearchBar'
 import { use } from 'react'
 import { getAllCategories } from '../api/ApiHandler'
-import { FaArrowDown } from 'react-icons/fa'
+import { FaArrowAltCircleDown, FaArrowDown } from 'react-icons/fa'
 
 const Navigation = () => {
 	const USERNAME = import.meta.env.VITE_USERNAME
@@ -42,7 +42,7 @@ const Navigation = () => {
 						<div className="dropdown dropdown-hover">
 							<div className='flex flex-row gap-2 justify-center items-center'>
 								<div tabIndex={0} role="button" >Categories</div>
-								<FaArrowDown className='w-3 opacity-30' />
+								<FaArrowAltCircleDown className='w-3 opacity-30' />
 							</div>
 
 							<ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-96 p-4 shadow flex flex-row gap-6">

@@ -17,7 +17,7 @@ const MaterialOL = ({ start = 0, children, ...props }) => {
 				  </div>
 				  <div className="w-full h-[3px] bg-accent" />
 				</div>
-				<div className="w-full text-center font-kanit">{childContent}</div>
+				<div className="w-full flex p-4 flex-col items-center font-kanit">{childContent}</div>
 			  </div>
 			);
 		  }

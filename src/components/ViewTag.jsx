@@ -13,7 +13,7 @@ const handleViews = (views) => {
 	}
 }
 return (
-	<div className={`badge badge-outline gap-2 px-2 py-0.5 items-center flex shadow-lg cursor-pointer btn-bounce`}>
+	<div className={`badge badge-outline gap-2 px-2 py-0.5 items-center flex shadow-lg`}>
 		<FaEye />
 		<p className={`font-montserrat text-sm font-bold`}>{handleViews(views)}</p>
 	</div>

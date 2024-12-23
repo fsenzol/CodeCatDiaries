@@ -1,8 +1,9 @@
 import React from 'react'
+import { TiSpanner } from 'react-icons/ti'
 
 const ImgRenderer = ({ src, alt, title }) => {
 	return (
-		<div className='flex flex-col justify-center items-center overflow-hidden rounded-md'>
+		<span className='flex block flex-col justify-center items-center overflow-hidden rounded-md'>
 			<img
 				src={src}
 				alt={alt || 'image'}
@@ -11,7 +12,7 @@ const ImgRenderer = ({ src, alt, title }) => {
 				loading='lazy'
 				className='object-fit aspect-auto my-4 h-auto max-h-72'
 			/>
-		</div>
+		</span>
 
 	)
 }

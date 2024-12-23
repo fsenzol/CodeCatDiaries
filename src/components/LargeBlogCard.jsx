@@ -36,7 +36,7 @@ const LargeBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes,
 			<div className="flex justify-evenly gap-3">
 				<LikeTag likes={likes} id={_id} />
 				<ViewTag views={views} />
-				<ShareTag id={_id} />
+				<ShareTag id={_id} summary={summary} title={title} />
 			</div>
 		</div>
 	);

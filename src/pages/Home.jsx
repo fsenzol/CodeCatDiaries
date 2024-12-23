@@ -11,12 +11,20 @@ const BlockBlogCard = React.lazy(() => import("../components/BlockBlogCard"));
 
 const Home = () => {
 
-	const [currentPage, setCurrentPage] = useState(1)
 	const [recentPosts, setRecentPosts] = useState([])
 
 	const updateRecentPosts = async () => {
 		const posts = await getRecentPosts(30, AUTH.USERNAME, AUTH.PASSWORD, AUTH.URL, AUTH.SECRET)
-		setRecentPosts(posts.data)
+
+		if (posts.status === 0) {
+			return setRecentPosts(posts.data)
+		}
+
+		setTimeout(() => {
+			updateRecentPosts()
+			console.log("Reloading")
+		}, 5000)
+		
 	}
 
 	useEffect(() => {
@@ -29,7 +37,7 @@ const Home = () => {
 				<div className="md:px-10 max-md:p-4">
 					<LargePageTitle defaultSize="150px" maxSize="90px" name={"THE BLOG"} font={"roboto"} />
 				</div>
-				<h1 className="text-header-content md:px-10 max-md:p-4">Recent blog posts</h1>
+				<h1 className="text-header-content md:px-10 max-md:p-4 md:mt-8 mt-4">Recent blog posts</h1>
 
 				{
 					recentPosts.length > 0 ? (
@@ -73,7 +81,7 @@ const Home = () => {
 				</Carousel>
 			</div>
 
-			<MaterialOL number={1}/>
+			<MaterialOL number={1} />
 
 
 		</section >
