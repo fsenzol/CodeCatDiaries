@@ -19,7 +19,7 @@
 	}
 
 	.text-header-content {
-		@apply uppercase font-lato font-bold w-full my-10 text-2xl text-primary tracking-wider max-sm:text-[15px];
+		@apply uppercase font-lato font-bold w-full text-2xl text-primary tracking-wider max-sm:text-[15px];
 	}
 	.text-header-content-no-marg {
 		@apply uppercase font-lato font-bold w-full text-2xl text-info tracking-wider max-sm:text-[15px];
@@ -30,7 +30,7 @@
 	}
 
 	.blog-post-card {
-		@apply border-[1px] border-neutral-content z-10 shadow-xl rounded-2xl p-4
+		@apply border-neutral-content z-10 shadow-xl rounded-2xl p-4
 	}
 
 	/* Headers */

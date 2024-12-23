@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import ImgRenderer from '../components/ImgRenderer'
 import { getAllPostById } from '../api/ApiHandler'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AUTH } from '../utility'
 import "../../styles/gruvbox.css"
@@ -11,6 +11,8 @@ import Prism from 'prismjs'
 
 
 const Post = () => {
+  const imageRef = useRef()
+  const divRef = useRef()
 
   const [post, setPost] = useState({})
   const { id } = useParams()
@@ -21,9 +23,37 @@ const Post = () => {
   }
 
 
+  // const calculateAndArrangeSizes = () => {
+  //   const content = document.querySelector('.content')
+  //   const images = content.querySelectorAll('img')
+
+  //   images.forEach(image => {
+  //     const width = image.width
+  //     const height = image.height
+
+  //     if (width > height) {
+  //       image.classList.add('w-full')
+  //     } else {
+  //       image.classList.add('h-full')
+  //     }
+  //   })  
+  // }
+
+  const calculateMargin = () => {
+    if (!imageRef.current) return
+    return divRef.current.style.marginTop = `${imageRef.current.clientHeight}px`
+  }
+
+
   useEffect(() => {
     handlePost()
   }, [])
+
+  useEffect(() => {
+    window.addEventListener('resize', calculateMargin)
+    return () => window.removeEventListener('resize', calculateMargin)
+  }, [])
+
 
   useEffect(() => {
     Prism.highlightAll()
@@ -35,11 +65,13 @@ const Post = () => {
         <img
           src={post.featured_image}
           alt={post.slug || 'image'}
-          className="max-w-h w-full inset-0 h-96 object-fit rounded-sm"
+          ref={imageRef}
+          className="w-full absolute inset-0 -z-10 max-h-[500px] object-fit rounded-b-md"
         />
+
       </div>
 
-      <div className="flex flex-col gap-4 px-2 justify-center">
+      <div className={`flex flex-col gap-4 px-2 justify-center`} ref={divRef}>
         <h3 className="post-text-date py-2">Published: {new Date(post.created_at).toLocaleString()}</h3>
         <h1 className="text-4xl font-bold my-4">{post.title}</h1>
         <p className="font-roboto font-semibold">{post.summary}</p>
@@ -71,7 +103,7 @@ const Post = () => {
               },
 
             }}
-            
+
           >
             {post.content}
           </ReactMarkdown>

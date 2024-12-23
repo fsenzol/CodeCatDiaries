@@ -10,8 +10,8 @@ const BlockBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes,
 	return (
 
 		<Suspense fallback={<div className="skeleton h-32 w-32"></div>}>
-			<div className="flex flex-col flex-1 justify-center items-start gap-2 blog-post-card select-none">
-		
+			<div className="flex flex-col w-full max-md:min-w-fit flex-1 justify-center items-start gap-3 blog-post-card select-none">
+
 				<Link to={`/posts/${_id}`} className='w-full'>
 					<img
 						src={featured_image}
@@ -23,22 +23,22 @@ const BlockBlogCard = ({ _id, title, slug, summary, tags, featured_image, likes,
 				<p className="post-text-date select-none">{new Date(created_at).toLocaleString()}</p>
 
 				<div className="flex flex-1 w-full justify-between items-center">
-					<h2 className="font-semibold font-lato text-xl text-pretty">{title}</h2>
+					<h2 className="font-semibold font-lato max-md:text-base text-xl text-pretty">{title}</h2>
 				</div>
 
 				{/* <p className="leading-tight font-roboto break-words text-lg">{postBody}</p> */}
 
-				<div className="flex flex-1 flex-wrap justify-start gap-6">
+				<div className="flex flex-1 flex-wrap justify-start gap-6 max-md:gap-1">
 					{tags.map((str, i) => (
 						<TagComponent tagName={str} key={i} />
 					))}
 				</div>
 
 
-				<div className="flex my-4 gap-6 z-20">
-					<LikeTag likes={likes} _id={_id} />
+				<div className="flex justify-evenly gap-3">
+					<LikeTag likes={likes} id={_id} />
 					<ViewTag views={views} />
-					<ShareTag />
+					<ShareTag id={_id} />
 				</div>
 
 			</div>

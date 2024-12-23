@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { Suspense, useEffect, useState } from "react"
 import LargePageTitle from "../components/LargePageTitle"
 import Pagination from "../components/Pagination"
 import { getRecentPosts } from "../api/ApiHandler"
 import { AUTH, handleSliceForSmallPage } from "../utility";
+import Carousel from "../components/Carousel";
 const LargeBlogCard = React.lazy(() => import("../components/LargeBlogCard"));
 const BlockBlogCard = React.lazy(() => import("../components/BlockBlogCard"));
 
@@ -23,27 +24,31 @@ const Home = () => {
 
 	return (
 		<section className="relative">
-			<div className="flex justify-start flex-col md:px-10 max-md:p-4">
-				<div>
+			<div className="flex justify-start flex-col">
+				<div className="md:px-10 max-md:p-4">
 					<LargePageTitle defaultSize="150px" maxSize="90px" name={"THE BLOG"} font={"roboto"} />
 				</div>
-				<h1 className="text-header-content">Recent blog posts</h1>
+				<h1 className="text-header-content md:px-10 max-md:p-4">Recent blog posts</h1>
 
 				{
 					recentPosts.length > 0 ? (
 						<>
-							<div className="grid grid-rows-2 grid-cols-2 max-md:grid-rows-1 max-md:grid-cols-1 gap-6 min-h-96">
+							<div className="min-h-96 w-full">
 
-								{recentPosts.slice(0, 4).map((data, i) => (
-									<div key={i}>
-										<LargeBlogCard {...data} />
-									</div>
-								))}
+								<Carousel>
+									{recentPosts.slice(0, 4).map((data, i) => (
+										<div key={i} className="carousel-item w-1/2">
+											<LargeBlogCard {...data} />
+										</div>
+									))}
+								</Carousel>
+
 
 							</div>
 
+
 							<div>
-								<h1 className="text-header-content">All blog posts</h1>
+								<h1 className="text-header-content md:px-10 max-md:p-4">All blog posts</h1>
 							</div>
 						</>
 					) : (<div className='w-full h-screen flex justify-center items-center'>
@@ -54,25 +59,17 @@ const Home = () => {
 
 			</div>
 
-			<div className="grid w-full xl:grid-cols-3 md:grid-cols-2 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 min-h-80 md:px-10 max-md:p-4">
-				{/* {dummyPosts.slice(5, 11).map((data, i) => (
-					<div key={i}>
-						<BlockBlogCard {...data} />
-					</div>
-				))} */}
-				{recentPosts.slice(4).slice(handleSliceForSmallPage(currentPage)).map((data, i) => (
-					<div key={i}>
-						<BlockBlogCard {...data} />
-					</div>
-				))}
-			</div>
+			<div className="w-full">
 
-
-			<div className=" my-6 w-full border-t-only flex justify-center p-2 border-base-content">
-				<Pagination pageValue={currentPage}
-					handleLeftClick={() => setCurrentPage((currentPage - 1) < 1 ? 1 : currentPage - 1)}
-					handleRightClick={() => setCurrentPage(currentPage + 1)}
-				/>
+				<Carousel>
+					{recentPosts.slice(4).map((data, i) => (
+						<div key={i} className="carousel-item w-1/2">
+							<Suspense fallback={<div className="loading loading-lg"></div>}>
+								<BlockBlogCard {...data} />
+							</Suspense>
+						</div>
+					))}
+				</Carousel>
 			</div>
 
 

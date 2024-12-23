@@ -26,7 +26,7 @@ const Category = () => {
 
 			{
 				posts.length > 0 ? (<div>
-					<div className="grid w-full xl:grid-cols-3 md:grid-cols-2 gap-3 max-md:grid-cols-1 max-md:grid-rows-1 px-10 min-h-screen">
+					<div className="flex-row flex justify-around w-full flex-wrap gap-3 px-10 min-h-screen">
 
 						{posts.slice(handleSliceForBigPage(currentPage)).map((data, i) => (
 							<div key={i}>

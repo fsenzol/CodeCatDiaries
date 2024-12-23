@@ -41,7 +41,7 @@ const ThemeSwitch = () => {
 				checked={theme == 'light' ? false : true} // Now checked is when the theme is light
 				onChange={handleThemeChange}
 				value={'light'}
-				className="toggle theme-controller "
+				className="toggle theme-controller bg-none bg-transparent"
 			>
 
 
