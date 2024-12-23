@@ -4,6 +4,7 @@ import Pagination from "../components/Pagination"
 import { getRecentPosts } from "../api/ApiHandler"
 import { AUTH, handleSliceForSmallPage } from "../utility";
 import Carousel from "../components/Carousel";
+import MaterialOL from "../components/MaterialOL";
 const LargeBlogCard = React.lazy(() => import("../components/LargeBlogCard"));
 const BlockBlogCard = React.lazy(() => import("../components/BlockBlogCard"));
 
@@ -71,6 +72,8 @@ const Home = () => {
 					))}
 				</Carousel>
 			</div>
+
+			<MaterialOL number={1}/>
 
 
 		</section >

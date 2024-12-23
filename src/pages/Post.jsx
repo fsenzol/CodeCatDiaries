@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { AUTH } from '../utility'
 import "../../styles/gruvbox.css"
 import Prism from 'prismjs'
+import MaterialOL from '../components/MaterialOL'
 
 
 
@@ -89,7 +90,7 @@ const Post = () => {
               em: ({ node, ...props }) => <em className="italic" {...props} />,
               p: ({ node, ...props }) => <p className="my-4 text-base leading-relaxed" {...props} />,
               ul: ({ node, ...props }) => <ul className="list-disc pl-6" {...props} />,
-              ol: ({ node, ...props }) => <ol className="list-decimal pl-3 font-semibold text-lg leading-relaxed my-2" {...props} />,
+              ol: ({ node, ...props }) => <MaterialOL className="list-decimal pl-3 font-semibold text-lg leading-relaxed my-2" {...props} />,
               a: ({ node, ...props }) => <a className="text-link underline hover:text-green-700" {...props} />,
               img: ({ src, alt }) => <ImgRenderer src={src} alt={alt} />,
 
