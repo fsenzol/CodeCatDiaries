@@ -1,9 +1,9 @@
 import React from 'react'
-import { myIntro, passions, TechStack } from '../utility'
+import { Attributions, myIntro, passions, TechStack } from '../utility'
 
 const About = () => {
 	return (
-		<section className='min-h-screen'>
+		<section className='min-h-screen my-6'>
 			<div className='px-4'>
 				<h1 className='font-bold uppercase font-montserrat'>About Me</h1>
 				<p className='font-roboto leading-normal'>{myIntro}</p>
@@ -16,15 +16,25 @@ const About = () => {
 					))}
 				</ul>
 
-				<h2>Hobbies and Interests</h2>
-				<p>Outside of coding, I enjoy:</p>
-				<ul>
+				<h2 className='pt-6 uppercase font-bold font-montserrat'>Hobbies and Interests</h2>
+				<p className='font-kanit'>Outside of coding, I enjoy:</p>
+				<ul className='pt-1'>
 					{passions.map((data, i) => (
-						<li key={i}>{data}</li>
+						<li className='px-3 text-justify font-medium font-roboto leading-tight' key={i}>{'>'} {data}</li>
 					))}
 				</ul>
 
-				<p>Feel free to reach out and connect with me. I love sharing ideas and learning from others!</p>
+				<p className='uppercase font-lato font-semibold py-4'>Feel free to reach out and connect with me. I love sharing ideas and learning from others :P</p>
+
+
+				<h2 className='pt-6 uppercase font-bold font-montserrat'>ATTRIBUTIONS</h2>
+				<div>
+					<li className='mx-8 text-accent'>
+						{Attributions.map(({ name, link }, i) => (
+							<a className='text-accent font-bold' href={link} target='_blank'>{name}</a>
+						))}
+					</li>
+				</div>
 			</div>
 		</section>
 	)

@@ -91,3 +91,11 @@ export const passions = [
 ]
 
 export const myIntro = "Hello! My name is Tazuh Faith (basedcatx), a 19-year-old developer from <strong>Cameroon</strong>. I’m passionate about creating, exploring, and sharing knowledge in the tech space. I specialize in the MERN stack and enjoy diving deep into various technologies."
+
+export const Attributions = [
+	{
+		name: "Freepik",
+		link: "https://freepik.com"
+	}
+]
+
