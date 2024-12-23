@@ -14,7 +14,13 @@ const Category = () => {
 
 	const handleCategory = async () => {
 		const categories = await getAllPostByCategory(id, AUTH.USERNAME, AUTH.PASSWORD, AUTH.URL, AUTH.SECRET)
-		setPosts(categories.data.posts)
+		if (categories.data.staus === 0) {
+			return setPosts(categories.data.posts)
+		}
+		setTimeout(() => {
+			handleCategory()
+		})
+		return setPosts([])
 	}
 
 	useEffect(() => {

@@ -47,6 +47,7 @@ const Navigation = () => {
 
 							<ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-96 p-4 shadow flex flex-row gap-6">
 								{categories.map(({ name, _id }, i) => (
+									
 									<Link key={i} to={`/category/${_id}`} className='navLinks text-nowrap'>
 										{name}
 									</Link>
@@ -82,8 +83,8 @@ const Navigation = () => {
 								</div>
 
 								<div className='flex flex-col gap-1 text-sm mt-4 font-thin'>
-									{categories.map(({ name, id }, i) => (
-										<Link key={i} to={`/category/${name.toLowerCase()}`} className='navLinks text-nowrap'>
+									{categories.map(({ name, _id }, i) => (
+										<Link key={i} to={`/category/${_id}`} className='navLinks text-nowrap'>
 											{name}
 										</Link>
 									))}

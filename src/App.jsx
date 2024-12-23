@@ -24,7 +24,7 @@ function App() {
 				<Navigation />
 				<section className='mt-24'>
 					<Routes>
-						<Route path='/' element={<Home />} />
+						<Route path='*' element={<Home />} />
 						<Route path='/home' element={<Home />} />
 						<Route path='/blog' element={<Home />} />
 						<Route path='/about' element={<About />} />
