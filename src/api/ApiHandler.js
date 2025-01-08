@@ -12,25 +12,10 @@ const headers = (auth, secret) => ({
 
 export const generateToken = async () => {
 
-	// try {
-	// 	const obj = JSON.parse(localStorage.getItem('tokenJson'))
-	// 	if (obj) {
-	// 		const date = new Date(obj.date)
-	// 		const now = new Date().getTime()
-	// 		const diff = now - date
-	// 		if ( (diff / 1000 / 60 / 60) <= 23 ) {
-	// 			return {
-	// 				status: 0,
-	// 				token: obj.token
-	// 			}
-	// 		}
-	// 	}
-	// } catch (ignore) { }
-
 	try {
 
 		const response = await axios.post(`${AUTH.URL}/authors/token`, {
-			username: AUTH(process.env).USERNAME,
+			username: AUTH.USERNAME,
 			password: AUTH.PASSWORD
 		}, {
 			headers: headers(null, AUTH.SECRET)

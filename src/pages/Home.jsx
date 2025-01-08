@@ -1,8 +1,7 @@
-import React, { Suspense, useEffect, useState } from "react"
+import React, {Suspense, useCallback, useEffect, useState} from "react"
 import LargePageTitle from "../components/LargePageTitle"
-import Pagination from "../components/Pagination"
 import { getRecentPosts } from "../api/ApiHandler"
-import { AUTH, handleSliceForSmallPage } from "../utility";
+import { AUTH } from "../utility";
 import Carousel from "../components/Carousel";
 import MaterialOL from "../components/MaterialOL";
 const LargeBlogCard = React.lazy(() => import("../components/LargeBlogCard"));
@@ -13,7 +12,7 @@ const Home = () => {
 
 	const [recentPosts, setRecentPosts] = useState([])
 
-	const updateRecentPosts = async () => {
+	const updateRecentPosts = useCallback(async () => {
 		const posts = await getRecentPosts(30, AUTH.USERNAME, AUTH.PASSWORD, AUTH.URL, AUTH.SECRET)
 
 		if (posts.status === 0) {
@@ -24,11 +23,11 @@ const Home = () => {
 			updateRecentPosts()
 		}, 5000)
 		
-	}
+	}, [])
 
 	useEffect(() => {
-		updateRecentPosts()
-	}, [])
+		updateRecentPosts().then(r => r)
+	}, [updateRecentPosts])
 
 	return (
 		<section className="relative min-h-screen">
