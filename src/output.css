@@ -8512,6 +8512,10 @@ html:has(.drawer-open.drawer-open){
   width: 100%;
 }
 
+.min-w-96{
+  min-width: 24rem;
+}
+
 .min-w-\[8rem\]{
   min-width: 8rem;
 }

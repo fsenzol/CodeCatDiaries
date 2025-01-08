@@ -8,9 +8,8 @@ const ImgRenderer = ({ src, alt, title }) => {
 				src={src}
 				alt={alt || 'image'}
 				title={title}
-				width={300}
 				loading='lazy'
-				className='object-fit aspect-auto my-4 h-auto max-h-72 rounded-md'
+				className='object-fit aspect-auto my-4 h-auto min-w-96 max-h-96 rounded-md'
 			/>
 		</span>
 
