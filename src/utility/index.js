@@ -1,4 +1,3 @@
-import process from "react-syntax-highlighter/.eslintrc.js";
 
 export const handleSliceForSmallPage = (currentPage) => {
 	const itemsPerPage = 6;
@@ -93,7 +92,7 @@ export const passions = [
 	"Socializing and building meaningful connections."
 ]
 
-export const myIntro = "Hello! My name is Tazuh Faith (basedcatx), a 19-year-old developer from <strong>Cameroon</strong>. I’m passionate about creating, exploring, and sharing knowledge in the tech space. I specialize in the MERN stack and enjoy diving deep into various technologies."
+export const myIntro = "Hello! My name is Tazuh Faith (basedcatx), a 19-year-old developer from Cameroon. I’m passionate about creating, exploring, and sharing knowledge in the tech space. I specialize in the MERN stack and enjoy diving deep into various technologies."
 
 export const Attributions = [
 	{
