@@ -1,30 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { navigationLinks } from '../constants'
 import { Link } from 'react-router-dom'
 import ThemeSwitch from '../components/ThemeSwitch'
 import { DropdownButton } from '../components/DropdownButton'
 import SearchBar from '../components/SearchBar'
 import { getAllCategories } from '../api/ApiHandler'
-import {ArrowDown} from "lucide-react";
+import {ChevronDown} from "lucide-react";
+import {AUTH} from "@/utility/index.js";
 
 
 
 const Navigation = () => {
-	const USERNAME = import.meta.env.VITE_USERNAME
-	const PASSWORD = import.meta.env.VITE_PASS
-	const URL = import.meta.env.VITE_API_URL
 
 	const [categories, setCategories] = useState([])
 
-	const setupCategories = async () => {
-		const categories = await getAllCategories(USERNAME, PASSWORD, URL)
-		setCategories(categories.data)
-	}
-
 
 	useEffect(() => {
-		setupCategories()
-	}, [categories, setupCategories])
+		const setupCategories = async () => {
+			const categories = await getAllCategories(AUTH.USERNAME,AUTH.PASSWORD, AUTH.URL)
+			setCategories(categories.data)
+		}
+		setupCategories().then(r => r)
+	}, [categories])
 
 
 
@@ -45,7 +42,7 @@ const Navigation = () => {
 						<div className="dropdown dropdown-hover">
 							<div className='flex flex-row gap-2 justify-center items-center'>
 								<div tabIndex={0} role="button" >Categories</div>
-								<ArrowDown className='w-3 opacity-30' />
+								<ChevronDown className='size-3 opacity-30' />
 							</div>
 
 							<ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-96 p-4 shadow flex flex-row gap-6">
@@ -82,7 +79,7 @@ const Navigation = () => {
 							<div className="dropdown dropdown-hover">
 								<div className='flex flex-row gap-2 justify-center items-center'>
 									<div tabIndex={0} role="button" >Categories</div>
-									<ArrowDown className='w-3 opacity-30' />
+									<ChevronDown className='w-3 opacity-30' />
 								</div>
 
 								<div className='flex flex-col gap-1 text-sm mt-4 font-thin'>
