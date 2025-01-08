@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 import ThemeSwitch from '../components/ThemeSwitch'
 import { DropdownButton } from '../components/DropdownButton'
 import SearchBar from '../components/SearchBar'
-import { use } from 'react'
 import { getAllCategories } from '../api/ApiHandler'
-import { FaArrowAltCircleDown, FaArrowDown } from 'react-icons/fa'
+import {ArrowDown} from "lucide-react";
+
+
 
 const Navigation = () => {
 	const USERNAME = import.meta.env.VITE_USERNAME
@@ -23,12 +24,12 @@ const Navigation = () => {
 
 	useEffect(() => {
 		setupCategories()
-	}, [])
+	}, [categories, setupCategories])
 
 
 
 	return (
-		<header className='fixed top-0 start-0 p-1 w-full uppercase text-md z-50 font-montserrat shadow-2xl rounded-b-2xl bg-gradient-to-b from-black/65 to-transparent backdrop-blur-[1px]'>
+		<header className='navigation-container bg-custom-radial bg-4x4'>
 			<div className='flex w-full flex-row justify-between flex-1 gap-2 p-2 items-center card-action'>
 				<p className='cursor-zoom-in font-kanit font-bold tracking-wider max-sm:text-[15px] max-sm:tracking-tighter'>The Based Blog</p>
 				<div className='max-md:hidden'>
@@ -39,14 +40,16 @@ const Navigation = () => {
 							</Link>
 						))}
 
+
+
 						<div className="dropdown dropdown-hover">
 							<div className='flex flex-row gap-2 justify-center items-center'>
 								<div tabIndex={0} role="button" >Categories</div>
-								<FaArrowAltCircleDown className='w-3 opacity-30' />
+								<ArrowDown className='w-3 opacity-30' />
 							</div>
 
 							<ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-96 p-4 shadow flex flex-row gap-6">
-								{categories.map(({ name, _id }, i) => (
+								{categories && categories.map(({ name, _id }, i) => (
 									
 									<Link key={i} to={`/category/${_id}`} className='navLinks text-nowrap'>
 										{name}
@@ -79,11 +82,11 @@ const Navigation = () => {
 							<div className="dropdown dropdown-hover">
 								<div className='flex flex-row gap-2 justify-center items-center'>
 									<div tabIndex={0} role="button" >Categories</div>
-									<FaArrowDown className='w-3 opacity-30' />
+									<ArrowDown className='w-3 opacity-30' />
 								</div>
 
 								<div className='flex flex-col gap-1 text-sm mt-4 font-thin'>
-									{categories.map(({ name, _id }, i) => (
+									{categories && categories.map(({ name, _id }, i) => (
 										<Link key={i} to={`/category/${_id}`} className='navLinks text-nowrap'>
 											{name}
 										</Link>

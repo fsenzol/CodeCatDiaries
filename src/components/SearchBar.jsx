@@ -45,8 +45,8 @@ import { useEffect, useRef, useState } from "react"
 
 				<div className={`${onFocus ? ' w-full opacity-100' : 'w-0 opacity-0'} transition-all duration-500 overflow-hidden ease-in-out`}
 					onFocus={() => setOnFocus(true)}>
-					<label className="input input-bordered flex items-center gap-2 hover:border-base-content">
-						<input type="text" className="grow max-sm:w-14" placeholder="Search"></input>
+					<label className="input input-ghost flex items-center gap-2 hover:border-base-content">
+						<input type="text" className=" max-sm:w-14 h-fit" placeholder="Search"></input>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 16 16"

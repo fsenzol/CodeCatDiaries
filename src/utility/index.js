@@ -1,3 +1,5 @@
+import process from "react-syntax-highlighter/.eslintrc.js";
+
 export const handleSliceForSmallPage = (currentPage) => {
 	const itemsPerPage = 6;
 	const startIndex = (currentPage - 1) * itemsPerPage;
@@ -14,11 +16,12 @@ export const handleSliceForBigPage = (currentPage) => {
 };
 
 export const AUTH = {
-	USERNAME: import.meta.env.VITE_USER,
-	PASSWORD: import.meta.env.VITE_PASS,
-	URL: import.meta.env.VITE_API_URL,
-	SECRET: import.meta.env.VITE_SECR
+	USERNAME: import.meta.env.VITE_USER || process.env.VITE_USER,
+	PASSWORD: import.meta.env.VITE_PASS || process.env.VITE_PASS,
+	URL: import.meta.env.VITE_API_URL 	|| process.env.VITE_API_URL,
+	SECRET: import.meta.env.VITE_SECR 	|| process.env.VITE_SECR
 }
+
 
 export const TechStack = [
 	{

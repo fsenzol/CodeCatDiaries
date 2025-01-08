@@ -23,10 +23,14 @@ function App() {
 			<HelmetProvider>
 				<BrowserRouter >
 					<Navigation />
-					<section className='mt-24'>
+					<section className='pt-24'>
+						<div className="fixed flex w-full h-full items-center rounded-full ">
+							<div className='h-full w-full bg-center-radial-blur bg-center border bg-no-repeat bg-blend-overlay blur-[90px]' />
+							<div className="h-full w-full bg-center-radial-red bg-center bg-no-repeat bg-blend-overlay blur-[90px]" />
+						</div>
 						<Routes>
-							<Route path='*' element={<Home />} />
-							<Route path='/home' element={<Home />} />
+							<Route path='*' element={<Home/>}/>
+							<Route path='/home' element={<Home/>}/>
 							<Route path='/blog' element={<Home />} />
 							<Route path='/about' element={<About />} />
 							<Route path='/category/:id' element={<Category />} />

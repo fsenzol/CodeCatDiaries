@@ -5,8 +5,7 @@ const ThemeSwitch = () => {
 	const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
 	const handleThemeChange = (e) => {
-		// Change theme based on checkbox checked status (reverse the logic)
-		const newTheme = e.target.checked ? "dark" : "light";
+		const newTheme = e.target.checked ? "light" : "dark";
 		setTheme(newTheme);
 		// Store the theme in localStorage
 		localStorage.setItem("theme", newTheme);
@@ -25,7 +24,7 @@ const ThemeSwitch = () => {
 		<label className="grid cursor-pointer place-items-center">
 			<input
 				type="checkbox"
-				checked={theme == 'light' ? false : true} // Now checked is when the theme is light
+				checked={theme !== 'dark'} // Now checked is when the theme is light
 				onChange={handleThemeChange}
 				value={'light'}
 				className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1" />

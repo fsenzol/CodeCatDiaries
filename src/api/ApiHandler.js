@@ -30,7 +30,7 @@ export const generateToken = async () => {
 	try {
 
 		const response = await axios.post(`${AUTH.URL}/authors/token`, {
-			username: AUTH.USERNAME,
+			username: AUTH(process.env).USERNAME,
 			password: AUTH.PASSWORD
 		}, {
 			headers: headers(null, AUTH.SECRET)

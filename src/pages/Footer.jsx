@@ -1,5 +1,4 @@
 import favicon from '../assets/favicon.png'
-import ig from '../assets/ig.svg'
 import { socialLinks } from '../constants'
 
 
@@ -10,7 +9,7 @@ const Footer = () => {
 				<img src={favicon} width={50} height={24} className='object-contain' />
 				<p className='text-base-content'>Copyright © {new Date().getFullYear()} - All right reserved</p>
 			</aside>
-			<nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+			<nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end z-20">
 				<a
 					href={socialLinks.x}
 					target='_blank'>
