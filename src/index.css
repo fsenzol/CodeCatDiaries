@@ -43,7 +43,8 @@
 	}
 
 	.blog-post-card {
-		@apply border-neutral-content z-10 shadow-md rounded-2xl p-4
+		@apply z-10 shadow-md rounded-2xl p-4 bg-primary/5
+		border
 	}
 
 	/* Headers */

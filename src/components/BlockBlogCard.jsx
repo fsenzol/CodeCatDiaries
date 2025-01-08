@@ -1,4 +1,3 @@
-import { FaLink } from "react-icons/fa"
 import TagComponent from "./TagComponent"
 import LikeTag from "./LikeTag"
 import ShareTag from "./ShareTag"
