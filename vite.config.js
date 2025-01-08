@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import dotenv from 'dotenv';
 import path from 'path';
-import process from "react-syntax-highlighter/.eslintrc.js";
 dotenv.config({ path: path.resolve(__dirname, './config.env') });
 
 // https://vite.dev/config/
