@@ -25,7 +25,7 @@ const Post = () => {
 
   const handlePost = async () => {
     const post = await getAllPostById(id, AUTH.USERNAME, AUTH.PASSWORD, AUTH.URL, AUTH.SECRET)
-    setPost(post.data.posts)
+    return setPost(post.data.posts)
   }
 
 
@@ -39,7 +39,7 @@ const Post = () => {
   }
 
   const updateView = async () => {
-    if (!Boolean(localStorage.getItem(`viewed-${id}`))) {
+    if (!localStorage.getItem(`viewed-${id}`)) {
       localStorage.setItem(`viewed-${id}`, true)
       await ViewPost(id)
     }
@@ -54,14 +54,14 @@ const Post = () => {
   useEffect(() => {
     window.addEventListener('resize', calculateMargin)
     return () => window.removeEventListener('resize', calculateMargin)
-  }, [])
+  }, [calculateMargin])
 
 
   useEffect(() => {
     Prism.highlightAll()
     calculateMargin()
     updateView()
-  }, [post])
+  }, [calculateMargin, post, updateView])
 
   const postBody = () => (
     <>
@@ -70,12 +70,12 @@ const Post = () => {
           src={post.featured_image}
           alt={post.slug || 'image'}
           ref={imageRef}
-          className="w-full absolute inset-0 -z-10 max-h-[500px] object-fit rounded-b-md"
+          className="w-full absolute inset-0 max-h-[500px] object-fit rounded-b-md"
         />
 
       </div>
 
-      <div className={`flex flex-col gap-4 px-2 justify-center`} ref={divRef}>
+      <div className={`flex flex-col gap-4 justify-center sm:px-10 md:px-12 lg:px-16`} ref={divRef}>
         <h3 className="post-text-date py-2">Published: {new Date(post.created_at).toLocaleString()}</h3>
         <h1 className="text-4xl font-bold my-4">{post.title}</h1>
         <p className="font-roboto font-semibold">{post.summary}</p>
@@ -99,16 +99,16 @@ const Post = () => {
               em: ({ node, ...props }) => <em className="italic" {...props} />,
               p: ({ node, ...props }) => <p className="my-4 text-base leading-relaxed" {...props} />,
               ul: ({ node, ...props }) => <ul className="list-disc pl-6" {...props} />,
-              ol: ({ node, ...props }) => <MaterialOL className="list-decimal pl-3 font-semibold text-lg leading-relaxed my-2" {...props} />,
+              ol: ({ node, ...props }) => <MaterialOL className="list-decimal pl-3 font-semibold text-lg leading-relaxed my-2 mx-auto w-full" {...props} />,
               a: ({ node, ...props }) => <a className="text-link underline hover:text-green-700" {...props} />,
               img: ({ src, alt }) => <ImgRenderer src={src} alt={alt} />,
 
               code: ({ node, inline, className, children, ...props }) => {
                 if (inline) {
-                  return <code className="bg-black px-1 shadow-xl py-0.5 rounded text-sm font-lato text-gray-800" {...props}>{children}</code>;
+                  return <code className="bg-black px-1 shadow-xl py-0.5 rounded text-sm font-lato prose z-50" {...props}>{children}</code>;
                 }
                 return (
-                  <pre className="bg-black text-white p-4 rounded-md font-lato shadow-xl overflow-x-auto">
+                  <pre className="bg-black prose p-4 rounded-md font-lato shadow-xl overflow-x-auto z-50">
                     <code className={className} {...props}>{children}</code>
                   </pre>
                 );

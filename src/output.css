@@ -8318,6 +8318,11 @@ html:has(.drawer-open.drawer-open){
   margin-bottom: 1.5rem;
 }
 
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mb-10{
   margin-bottom: 2.5rem;
 }
@@ -8396,6 +8401,10 @@ html:has(.drawer-open.drawer-open){
 
 .h-6{
   height: 1.5rem;
+}
+
+.h-64{
+  height: 16rem;
 }
 
 .h-\[3px\]{
@@ -8518,6 +8527,14 @@ html:has(.drawer-open.drawer-open){
 
 .min-w-\[8rem\]{
   min-width: 8rem;
+}
+
+.max-w-lg{
+  max-width: 32rem;
+}
+
+.max-w-xl{
+  max-width: 36rem;
 }
 
 .flex-1{
@@ -8787,11 +8804,11 @@ html:has(.drawer-open.drawer-open){
 }
 
 .bg-center-radial-blur{
-  background-image: radial-gradient(ellipse 150% 100% at center, rgba(112, 128, 144, 0.2), transparent 100%);
+  background-image: radial-gradient(ellipse 100% 150% at center, rgba(112, 128, 144, 0.2), transparent 100%);
 }
 
 .bg-center-radial-red{
-  background-image: radial-gradient(ellipse 150% 100% at center, rgba(239, 68, 68, 0.2), transparent 100%);
+  background-image: radial-gradient(ellipse 100% 150% at center, rgba(239, 68, 68, 0.2), transparent 100%);
 }
 
 .bg-custom-radial{
@@ -9721,6 +9738,18 @@ html:has(.drawer-open.drawer-open){
   }
 }
 
+@media (min-width: 640px){
+  .sm\:px-6{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .sm\:px-10{
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
 @media (min-width: 768px){
   .md\:mt-8{
     margin-top: 2rem;
@@ -9747,9 +9776,21 @@ html:has(.drawer-open.drawer-open){
     padding-right: 2.5rem;
   }
 
+  .md\:px-12{
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
   .md\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px){
+  .lg\:px-16{
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 }
 

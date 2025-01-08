@@ -24,7 +24,7 @@ function App() {
 				<BrowserRouter >
 					<Navigation />
 					<section className='pt-24'>
-						<div className="fixed flex w-full h-full items-center rounded-full ">
+						<div className="fixed flex w-full h-64 justify-center items-center rounded-full ">
 							<div className='h-full w-full bg-center-radial-blur bg-center border bg-no-repeat bg-blend-overlay blur-[90px]' />
 							<div className="h-full w-full bg-center-radial-red bg-center bg-no-repeat bg-blend-overlay blur-[90px]" />
 						</div>

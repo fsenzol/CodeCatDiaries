@@ -32,8 +32,8 @@ export default {
     		},
     		backgroundImage: {
     			'custom-radial': '`radial-gradient(rgb(0, 0, 0, 0) 1px, rgba(239, 68, 68, 0.2) 1px)`',
-    			'center-radial-blur': 'radial-gradient(ellipse 150% 100% at center, rgba(112, 128, 144, 0.2), transparent 100%)',
-    			'center-radial-red': 'radial-gradient(ellipse 150% 100% at center, rgba(239, 68, 68, 0.2), transparent 100%)'
+    			'center-radial-blur': 'radial-gradient(ellipse 100% 150% at center, rgba(112, 128, 144, 0.2), transparent 100%)',
+    			'center-radial-red': 'radial-gradient(ellipse 100% 150% at center, rgba(239, 68, 68, 0.2), transparent 100%)'
     		},
     		backgroundSize: {
     			'4x4': '4px 4px'
