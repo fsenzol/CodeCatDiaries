@@ -90,6 +90,7 @@ const Post = () => {
 
         <div className="font-lato flex flex-1 flex-col grow leading-normal tracking-normal mb-10">
           <ReactMarkdown
+            className="z-80"
             remarkPlugins={[remarkGfm]}
             components={{
               h1: ({ node, ...props }) => <h1 className="text-3xl font-bold my-4 text-pretty" {...props} />,
