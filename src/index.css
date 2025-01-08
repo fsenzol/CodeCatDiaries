@@ -57,7 +57,7 @@
   	}
 
 	.navLinks {
-		@apply hover:text-info transition-colors duration-300 hover:underline underline-offset-8 text-nowrap
+		@apply duration-300 hover:underline underline-offset-8 text-nowrap
 	}
   
   	.markdown-content h3 {
@@ -67,7 +67,7 @@
 }
 
 .fix-whitespace {
-	white-space: 'pre-wrap';
+	white-space: pre-wrap;
 }
 
 @layer base {
