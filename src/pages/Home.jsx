@@ -1,9 +1,9 @@
 import React, {Suspense, useCallback, useEffect, useState} from "react"
-import LargePageTitle from "../components/LargePageTitle"
 import { getRecentPosts } from "../api/ApiHandler"
 import { AUTH } from "../utility";
 import Carousel from "../components/Carousel";
 import MaterialOL from "../components/MaterialOL";
+//import ThemeCanvas from "@/components/ThemeCanvas.jsx";
 const LargeBlogCard = React.lazy(() => import("../components/LargeBlogCard"));
 const BlockBlogCard = React.lazy(() => import("../components/BlockBlogCard"));
 
@@ -32,10 +32,8 @@ const Home = () => {
 	return (
 		<section className="relative min-h-screen">
 			<div className="flex justify-start flex-col">
-				<div className="md:px-10 max-md:p-4">
-					<LargePageTitle defaultSize="150px" maxSize="90px" name={"THE BLOG"} font={"roboto"} />
-				</div>
-				<h1 className="text-header-content md:px-10 max-md:p-4 md:mt-8 mt-4">Recent blog posts</h1>
+
+				<h1 className="text-header-content md:px-10  max-md:p-4 md:mt-28 mt-20">Recent blog posts</h1>
 
 				{
 					recentPosts.length > 0 ? (

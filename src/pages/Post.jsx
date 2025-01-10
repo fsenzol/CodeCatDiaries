@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import ImgRenderer from '../components/ImgRenderer'
 import { getAllPostById, ViewPost } from '../api/ApiHandler'
-import { useEffect, useRef, useState } from 'react'
+import {useCallback, useEffect, useRef, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import { AUTH } from '../utility'
 import "../../styles/gruvbox.css"
@@ -29,14 +29,16 @@ const Post = () => {
   }
 
 
-  const calculateMargin = () => {
-    if (!imageRef.current) {
-      return setTimeout(() => {
-        calculateMargin()
-      }, 1000)
-    }
-    return divRef.current.style.marginTop = `${imageRef.current.clientHeight}px`
-  }
+    const calculateMargin = (() => {
+        if (!imageRef.current) {
+            return setTimeout(() => {
+                calculateMargin()
+            }, 1000)
+        }
+        return divRef.current.style.marginTop = `${imageRef.current.clientHeight}px`
+    })
+
+
 
   const updateView = async () => {
     if (!localStorage.getItem(`viewed-${id}`)) {
@@ -47,21 +49,20 @@ const Post = () => {
 
 
   useEffect(() => {
-    handlePost()
-
-  }, [])
+    handlePost().then(r => r)
+  }, [id])
 
   useEffect(() => {
     window.addEventListener('resize', calculateMargin)
     return () => window.removeEventListener('resize', calculateMargin)
-  }, [calculateMargin])
+  }, [id])
 
 
   useEffect(() => {
     Prism.highlightAll()
     calculateMargin()
     updateView()
-  }, [calculateMargin, post, updateView])
+  }, [id])
 
   const postBody = () => (
     <>
@@ -75,7 +76,7 @@ const Post = () => {
 
       </div>
 
-      <div className={`flex flex-col gap-4 justify-center sm:px-10 md:px-12 lg:px-16`} ref={divRef}>
+      <div className={`flex flex-col gap-4 justify-center sm:px-10 md:px-12 lg:px-16 z-[80px] px-4`} ref={divRef}>
         <h3 className="post-text-date py-2">Published: {new Date(post.created_at).toLocaleString()}</h3>
         <h1 className="text-4xl font-bold my-4">{post.title}</h1>
         <p className="font-roboto font-semibold">{post.summary}</p>
@@ -91,6 +92,7 @@ const Post = () => {
         <div className="font-lato flex flex-1 flex-col grow leading-normal tracking-normal mb-10">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
+
             components={{
               h1: ({ node, ...props }) => <h1 className="text-3xl font-bold my-4 text-pretty" {...props} />,
               h2: ({ node, ...props }) => <h2 className="text-2xl font-bold my-2 text-pretty" {...props} />,
@@ -105,10 +107,10 @@ const Post = () => {
 
               code: ({ node, inline, className, children, ...props }) => {
                 if (inline) {
-                  return <code className="bg-black px-1 shadow-xl py-0.5 rounded text-sm font-lato prose z-50" {...props}>{children}</code>;
+                  return <code className="bg-black px-1 shadow-xl py-0.5 rounded text-sm font-lato prose" {...props}>{children}</code>;
                 }
                 return (
-                  <pre className="bg-black prose p-4 rounded-md font-lato shadow-xl overflow-x-auto z-50">
+                  <pre className="bg-black prose p-4 rounded-md font-lato shadow-xl overflow-x-auto">
                     <code className={className} {...props}>{children}</code>
                   </pre>
                 );

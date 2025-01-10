@@ -10,13 +10,32 @@
 	background-blend-mode: overlay;
 }
 
+@keyframes open {
+	0% {
+		top: 3rem;
+		right: 3rem;
+		width: 0;
+		height: 0;
+		clip-path: circle(0rem at center);
+	}
+	100% {
+		top: calc(-250vmax + 3rem);
+		right: calc(-250vmax + 3rem);
+		width: 500vmax;
+		height: 500vmax;
+		clip-path: circle(100% at center);
+	}
+}
+
+.open {
+	animation: open 1s forwards;
+}
+
+
 @layer utilities {
 	.post-text-date {
 		@apply text-primary text-sm font-kanit font-light
 	}
-
-
-
 
 	.navigation-container {
 		@apply fixed left-0 right-0 px-4 top-0 mt-4 mx-auto

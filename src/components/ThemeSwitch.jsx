@@ -1,66 +1,54 @@
-import { useEffect, useState } from "react";
+import React, {useContext, useEffect, useRef} from "react";
+import Context from "@/context/DarkModeProvider.jsx";
+import {MoonStar, SunMoon} from "lucide-react";
+import gsap from "gsap";
+import {MemoizedSun} from "@/components/MemoizedSun.js";
+import {MemoizedMoon} from "@/components/MemoizedMoon.js";
 
 const ThemeSwitch = () => {
-	// Initialize theme from localStorage or default to light
-	const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-
-	const handleThemeChange = (e) => {
-		const newTheme = e.target.checked ? "light" : "dark";
-		setTheme(newTheme);
-		// Store the theme in localStorage
-		localStorage.setItem("theme", newTheme);
-	};
-
-	useEffect(() => {
-		// Remove both light and dark classes before adding the new one
-		document.documentElement.classList.remove("light", "dark");
-		document.documentElement.classList.add(theme);
-	}, [theme]); // Run whenever the theme state changes
-
-	return (
+    const context = useContext(Context);
+    const iconRef = useRef(null);
 
 
+    useEffect(() => {
+        document.documentElement.classList.remove("light", "dark");
+        document.documentElement.classList.add(context.darkMode ? "dark" : "light");
 
-		<label className="grid cursor-pointer place-items-center">
-			<input
-				type="checkbox"
-				checked={theme !== 'dark'} // Now checked is when the theme is light
-				onChange={handleThemeChange}
-				value={'light'}
-				className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1" />
-			<svg
-				className="stroke-base-100 fill-base-100 col-start-1 row-start-1"
-				xmlns="http://www.w3.org/2000/svg"
-				width="14"
-				height="14"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="2"
-				strokeLinecap="round"
-				strokeLinejoin="round">
-				<circle cx="12" cy="12" r="5" />
-				<path
-					d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
-			</svg>
-			<svg
-				className="stroke-base-100 fill-base-100 col-start-2 row-start-1"
-				xmlns="http://www.w3.org/2000/svg"
-				width="14"
-				height="14"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="2"
-				strokeLinecap="round"
-				strokeLinejoin="round">
-				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-			</svg>
-		</label>
-	);
+
+    }, [context.darkMode]);
+
+    return (
+        <div onClick={() => {
+            const tl = gsap.timeline();
+
+            // Move the icon up and fade it out
+            tl.to(iconRef.current, {
+                duration: 0.3,
+                y: -100,   // Move it upward
+                opacity: 0, // Fade it out
+                ease: "power3.out",
+            }).set(iconRef.current, {y: 100, opacity: 0, delay: 0.8}).to(iconRef.current, {
+                    duration: 0.3,
+                    delay: 1,
+                    y: 0,      // Move back to center
+                    opacity: 1, // Fade back in
+                    ease: "power3.in",
+                });
+
+            setTimeout(() => {
+                context.setDarkMode(prevDarkMode => !prevDarkMode);
+                localStorage.setItem("theme", context.darkMode);
+            }, 3000)
+
+        }
+        } className="overflow-hidden h-full p-4">
+            {context.darkMode ? (
+                <MemoizedMoon className="transition-all duration-500" ref={iconRef}/>
+            ) : (
+                <MemoizedSun className="transition-all duration-500" ref={iconRef}/>
+            )}
+        </div>
+    );
 };
 
 export default ThemeSwitch;
-
-
-

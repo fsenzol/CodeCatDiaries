@@ -3,12 +3,15 @@ import daisyui from 'daisyui'
 import colors from "tailwindcss/colors.js";
 
 
+import tailwindcss_animate from "tailwindcss-animate";
+
 export default {
 	content: ['./src/**/*.{jsx,js,ts,tsx}', './node_modules/daisyui/dist/**/*.js'],
 	darkMode: ['class', 'class'],
 	mode: 'jit',
 	theme: {
     	extend: {
+
     		fontFamily: {
     			montserrat: [
     				'Montserrat',
@@ -90,7 +93,7 @@ export default {
 
 	plugins: [
 		daisyui, // This should be outside of the `theme` object
-        require("tailwindcss-animate")
+        tailwindcss_animate
     ],
 
 	// daisyui: {
