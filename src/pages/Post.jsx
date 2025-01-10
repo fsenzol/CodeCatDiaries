@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import ImgRenderer from '../components/ImgRenderer'
 import { getAllPostById, ViewPost } from '../api/ApiHandler'
-import {useCallback, useEffect, useRef, useState} from 'react'
+import {useEffect, useRef, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import { AUTH } from '../utility'
 import "../../styles/gruvbox.css"
@@ -91,9 +91,7 @@ const Post = () => {
 
         <div className="font-lato flex flex-1 flex-col grow leading-normal tracking-normal mb-10">
           <ReactMarkdown
-            className="z-80"
             remarkPlugins={[remarkGfm]}
-
             components={{
               h1: ({ node, ...props }) => <h1 className="text-3xl font-bold my-4 text-pretty" {...props} />,
               h2: ({ node, ...props }) => <h2 className="text-2xl font-bold my-2 text-pretty" {...props} />,
