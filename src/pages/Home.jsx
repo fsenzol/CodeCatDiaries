@@ -33,7 +33,7 @@ const Home = () => {
 		<section className="relative min-h-screen">
 			<div className="flex justify-start flex-col">
 
-				<h1 className="text-header-content md:px-10  max-md:p-4 mt-28">Recent blog posts</h1>
+				<h1 className="text-header-content md:px-10  max-md:p-4 mt-32">Recent blog posts</h1>
 
 				{
 					recentPosts.length > 0 ? (
